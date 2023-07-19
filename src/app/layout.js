@@ -1,5 +1,10 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Navbar from "../../components/Navbar"
+
+//In next Js, the layout.js file takes the place that the app file took in 
+//normal React. So components imported here will appear on every page. 
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Navbar/>
+        {children}</body>
     </html>
   )
 }
