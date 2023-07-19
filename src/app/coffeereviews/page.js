@@ -12,6 +12,7 @@ export default function reviewpage(){
     const readMore=(id)=>{
         console.log(id)
         console.log(data.data[0].attributes.ProductImage.data[0].attributes.url);
+        //line below commented out because I havent yet set up the individual pages for each review
         // router.push('/coffeereviews/' + id)
     }
 
@@ -30,11 +31,11 @@ export default function reviewpage(){
             {data.data.map(review => (
                 <div key={review.id} className='review-card'>
                  <h1>Review {review.id}: {review.attributes.Title}</h1>
-                 {/* <div className='reviewPic'>
-                 <p>Testteststest</p>{review.attributes.ProductImage.data.map(picnav=> (
-                    <p>{picnav.id}</p>
-                 ))}
-                 </div> */}
+                 <div className='reviewPic'>
+                 {/* Display the image URL for each review */}
+                 {/* Notice how I append the fetch call url data with {`http://localhost:1337`} */}
+                 <img src={`http://localhost:1337${review.attributes.ProductImage.data[0].attributes.formats.small.url}`} alt={`Image for Review ${review.id}`} />
+                 </div>
                  <div className='rating'>
                  <h3>Rating: {review.attributes.Rating}</h3>
                  </div>
