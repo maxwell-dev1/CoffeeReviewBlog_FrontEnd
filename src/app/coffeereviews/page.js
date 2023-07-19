@@ -34,6 +34,7 @@ export default function reviewpage(){
                  <div className='reviewPic'>
                  {/* Display the image URL for each review */}
                  {/* Notice how I append the fetch call url data with {`http://localhost:1337`} */}
+                 {/* By the way, if I dont go into .formats.sizehere.url, and just go straight to .data[0].attributes.url , it will give us the actual default image (way too large) */}
                  <img src={`http://localhost:1337${review.attributes.ProductImage.data[0].attributes.formats.small.url}`} alt={`Image for Review ${review.id}`} />
                  </div>
                  <div className='rating'>
