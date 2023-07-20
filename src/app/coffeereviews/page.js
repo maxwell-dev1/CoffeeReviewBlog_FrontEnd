@@ -3,6 +3,7 @@ import useFetch from '../../../hooks/useFetch'
 // import { useEffect,useState } from "react"
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link';
 
 
 export default function reviewpage(){
@@ -11,7 +12,6 @@ export default function reviewpage(){
 
     const readMore=(id)=>{
         console.log(id)
-        console.log(data.data[0].attributes.ProductImage.data[0].attributes.url);
         //line below commented out because I havent yet set up the individual pages for each review
         // router.push('/coffeereviews/' + id)
     }
@@ -43,10 +43,13 @@ export default function reviewpage(){
                  <div className='detailsPreview'>
                  <p>Details: {review.attributes.Body.substring(0,20)}...</p>
                  </div>
-                 <div className='readMoreButton'>
+                 {/* <div className='readMoreButton'>
                  {/*MUST USE ARROW FUNCTIONS FOR EVENT HANDLERS */}
-                 <button onClick={()=>readMore(`${review.id}`)}>Read more</button>
-                 </div>
+                 {/* <button onClick={()=>readMore(`${review.id}`)}>Read more</button> */}
+                 {/* <Link href="/coffeereviews/[id]" as={`/coffeereviews/[id]/${review.id}`} key={review.id}>
+                    read
+                    </Link>
+                 </div> */}
                  <br></br>
                 </div>
                 
