@@ -43,13 +43,12 @@ export default function reviewpage(){
                  <div className='detailsPreview'>
                  <p>Details: {review.attributes.Body.substring(0,20)}...</p>
                  </div>
-                 {/* <div className='readMoreButton'>
-                 {/*MUST USE ARROW FUNCTIONS FOR EVENT HANDLERS */}
-                 {/* <button onClick={()=>readMore(`${review.id}`)}>Read more</button> */}
-                 {/* <Link href="/coffeereviews/[id]" as={`/coffeereviews/[id]/${review.id}`} key={review.id}>
-                    read
+                 {/* Dyanmic routing stuff below */}
+                 <div className="readMoreDiv">
+                    <Link href={'/coffeereviews/'+ review.id} key={review.id}>
+                        <h3>Read More</h3>
                     </Link>
-                 </div> */}
+                    </div>
                  <br></br>
                 </div>
                 
