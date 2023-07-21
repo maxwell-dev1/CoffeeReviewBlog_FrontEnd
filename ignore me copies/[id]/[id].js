@@ -5,10 +5,7 @@ import useFetch from '../../hooks/useFetch';
 const ReviewPage = ({review}) =>{
     return(
         <div>
-          <img
-            src={`http://localhost:1337${review.attributes.ProductImage.data[0].attributes.formats.small.url}`}
-            alt={`Image for Review ${review.id}`}
-            />
+          
             <h3>Rating: {review.attributes.Rating}</h3>
             <p>Details: {review.attributes.Body}</p>  
         </div>
@@ -16,7 +13,7 @@ const ReviewPage = ({review}) =>{
 };
 
 export function getStaticPaths(){
-    const {data} =  useFetch('http://localhost:1337/api/coffee-reviews/?populate=*');
+    const {data} =  useFetch('http://localhost:1337/api/coffee-reviews*');
     // collect all the review ID's:
     const reviewIDs = [];
     reviewIDs= data.data.map((review)=>review.id);
