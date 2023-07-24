@@ -45,7 +45,8 @@ export default function reviewpage(){
                  </div>
                  {/* Dyanmic routing stuff below */}
                  <div className="readMoreDiv">
-                    <Link href={'/coffeereviews/'+ review.id} key={review.id}>
+                    {/* By using the backtick notation with ${review.id} we dynamically send the review's id to Details component in [id].js */}
+                    <Link href={`/coffeereviews/${review.id}`} key={review.id}>
                         <h3>Read More</h3>
                     </Link>
                     </div>
