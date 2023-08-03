@@ -1,7 +1,18 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
 
-export default function Home() {
+export default function RootPage() {
+
+//apollo Client 
+const client = new ApolloClient({
+  uri: 'http://localhost:1337/graphql',
+  cache: new InMemoryCache()
+})
+
+
+
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -9,6 +20,7 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.js</code>
         </p>
+
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

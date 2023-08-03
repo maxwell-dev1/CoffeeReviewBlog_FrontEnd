@@ -16,8 +16,8 @@ export default function register(){
 
     const handleRegistration = async () =>{
         const userToRegister = {
-            "username": "dronald",
-            "email": "dufus1asdf2343@gmail.com",
+            "username": "ChrisP",
+            "email": "ChrisP@gmail.com",
             "password": "Donkeys"
         }
         try{

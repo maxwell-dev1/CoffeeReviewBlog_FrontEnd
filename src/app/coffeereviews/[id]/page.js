@@ -6,12 +6,14 @@ import axios from 'axios';
 
 
 const Details = () => {
+    //Since I did all that flashy stuff with the ScrollAwareFooter, We need to reset the scroll bar to start for some pages.
+    window.scrollTo(0,0);
 
     let thisURL = window.location.href;
     
     //used to collect data between / character and put into array
     thisURL =thisURL.split('/')
-       //collect that last element of the array above
+    //collect that last element of the array above
     let lastSeg = thisURL.pop();
 
     const [review, setData] = useState({});
@@ -26,10 +28,8 @@ const Details = () => {
 
         const fetchData = async () => {
             try {
-                // setUrl(lastSeg)
                 const response =  await axios.get(`http://localhost:1337/api/coffee-reviews/${lastSeg}/?populate=*`);
                 setData(response.data);
-                console.log(response.data);
                 setLoading(false)
 
             } catch (error) {
@@ -51,19 +51,33 @@ const Details = () => {
      
      let id = review.data?.id
      let title = review.data?.attributes.Title;
-
+     let rating=review.data?.attributes.Rating;
+     let imgURL= review.data?.attributes.ProductImage.data[0].attributes.formats.medium.url;
+     let body = review.data?.attributes.Body;
+     console.log(rating);
+     console.log(title);
+     console.log(id)
+     console.log(imgURL)
     return (
 
-        <div className = 'singleReview'>
+        <div >
             {/* Notation explanation: is loading true? Then render everything in parenthesis of first arg between brackets, otherwise
              if loading is false we load the other argument  */}
             {loading ? (
                 <p>Loading....</p>
             ) :
-            (
+            (   <div className = 'singleReview'>
+                <div className= 'singleTitle'>
                 <h1>Review {id}: {title}</h1>
+                </div>
+                <div className='singleImage'>
+                <img src= {`http://localhost:1337${imgURL}`} />
+                </div>
+                <div className='singleBody'>
+                <p>{body}</p>
+                </div>
+                </div>
             )}
-
         </div>
 
     );

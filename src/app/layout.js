@@ -1,6 +1,11 @@
+'use client';
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from "../../components/Navbar"
+import ScrollAwareFooter from '../../components/ScrollAwareFooter'
+import { LogGoodProvider } from '/components/LogGoodContext';
+
+
 
 //In next Js, the layout.js file takes the place that the app file took in 
 //normal React. So components imported here will appear on every page. 
@@ -16,9 +21,17 @@ export const metadata  = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <LogGoodProvider>
       <body className={inter.className}>
       <Navbar/>
-        {children}</body>
+      <div className="page-wrapper">
+      <div className='content'>
+        {children}
+        </div>
+        <div className="filler"></div>
+        <ScrollAwareFooter/></div>
+        </body>
+        </LogGoodProvider>
     </html>
   )
 }
