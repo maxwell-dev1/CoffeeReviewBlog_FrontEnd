@@ -1,15 +1,21 @@
 'use client';
 import React, { useState } from 'react';
-
+import { useLogGood } from '/components/LogGoodContext';
 
 const Navbar = () => {
+  const { logGood, setLogGood } = useLogGood();
+
+  function logOut(){
+    setLogGood(false);
+  }
+
   const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleDropdown = () => {
     setShowDropdown(!showDropdown);
   };
 
-
+  console.log('logGood=' + logGood);
   return (
     
     <div className='navLinks'>
@@ -27,6 +33,7 @@ const Navbar = () => {
               <div className="dropdownContent">
                 <a href="/registration">New Users</a>
                 <a href="/login">Login</a>
+                {logGood && <a href="" onClick={logOut}>Logout</a>}
               </div>
             )}
           </div>      
