@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import Navbar from "../../components/Navbar"
 import ScrollAwareFooter from '../../components/ScrollAwareFooter'
 import { LogGoodProvider } from '/components/LogGoodContext';
-
+import { UserContextProvider } from '../../components/UserContext';
 
 
 //In next Js, the layout.js file takes the place that the app file took in 
@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <LogGoodProvider>
+      <UserContextProvider>
       <body className={inter.className}>
       <Navbar/>
       <div className="page-wrapper">
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
         <div className="filler"></div>
         <ScrollAwareFooter/></div>
         </body>
+        </UserContextProvider>
         </LogGoodProvider>
     </html>
   )

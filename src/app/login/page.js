@@ -4,17 +4,20 @@ import useStrapi from "../../../hooks/useStrapi"
 import React from 'react';
 import { useLogGood } from '../../../components/LogGoodContext';
 import LoginInputs from '../../../components/LoginInputs';
+import { useUserContext } from '../../../components/UserContext';
 
 export default function LoginPage(){
 
-    const [activeUser, setActiveUser] = useState("");
+    // const [activeUser, setActiveUser] = useState("");
     const [activePass, setActivePass] = useState("");
     const {fetchAPI} = useStrapi();
-    const { logGood, setLogGood } = useLogGood();
+    const { logGood, setLogGood} = useLogGood();
+    const [activeUser1, setActiveUser1] = useState('');
+    const {setActiveUser} = useUserContext();
     
 
     const handleInputChange1 = (e) =>{
-        setActiveUser(e.target.value);
+        setActiveUser1(e.target.value);
     };
     const handleInputChange2 = (e) =>{
         setActivePass(e.target.value);
@@ -22,11 +25,11 @@ export default function LoginPage(){
 
     const handleLogin = async () => {
         // Here you can perform any login logic using the 'username' state
-        console.log('Submitted username: '+ activeUser+  
+        console.log('Submitted username: '+ activeUser1+  
         ' password: '+ activePass);
 
         const loginData = {
-            "identifier": activeUser,
+            "identifier": activeUser1,
             "password": activePass
         };
 
@@ -37,8 +40,10 @@ export default function LoginPage(){
                 data: loginData
             });
             if(response.status===200){
-                console.log('login succesful');
                 setLogGood(true);
+                setActiveUser(activeUser1)
+                let jwt = response.data.jwt
+                console.log('login succesful. JWT: ' + jwt);
             }
             else{
                 console.log('login failed!')
@@ -65,20 +70,8 @@ export default function LoginPage(){
       function logOut(){
         console.log("Performing logout.")
         setLogGood(false);
+        setActiveUser("");
       }
-
-    //   const LoginInputs =()=>{
-    //     return(
-    //         <div>
-    //             Enter username:
-    //                 <input type='text' value={activeUser} onChange={handleInputChange1}/>
-    //                 Enter password:
-    //                 <input type='text' value={activePass} onChange={handleInputChange2} />
-    //             <br></br>
-    //             <button onClick={handleLogin} className='loginButton'>Login</button>
-    //         </div>
-    //     )
-    //   }
 
 
     console.log("Value of logGood:" + logGood);
@@ -86,10 +79,9 @@ export default function LoginPage(){
     return(
         <div className="loginPage">
             <p>Welcome to login page</p>
-                {/* {!logGood && <LoginInputs/>} */}
                 {!logGood && (
         <LoginInputs
-          activeUser={activeUser}
+          activeUser={activeUser1}
           activePass={activePass}
           handleInputChange1={handleInputChange1}
           handleInputChange2={handleInputChange2}
