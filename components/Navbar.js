@@ -31,7 +31,7 @@ const Navbar = () => {
       </li>
       <li>
       <div className="navDropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
-            <a className="navLink" href="/registration">User menu</a>
+            <a className="navLink" >User menu</a>
             {showDropdown && (
               <div className="dropdownContent">
                 <a href="/registration">New Users</a>

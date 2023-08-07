@@ -38,7 +38,7 @@ ul li a{
 }
 
 body{
-  background-color: #816d48;  
+  background-color: #967259;  
 }
 
 .navLinks li{
@@ -53,7 +53,7 @@ body{
   position: absolute;
   top:-20px;
   left:-5px;
-  background:darkgreen;
+  background:#38220f;
   font-size:20px;
   width:90px;
   height:90px;
@@ -140,4 +140,65 @@ body{
 .dropdownContent a {
   display: block;
   margin-bottom: 4px; /* Adjust this value to control the spacing between links */
+}
+
+.post-button-container{
+  overflow: hidden;
+}
+.newPostBtn, .loginButton, .createPostButton{
+  float: right;
+  background-image: linear-gradient(-180deg, rgb(163, 138, 105) 0%, rgb(121, 31, 31) 100%);
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  padding: .5rem 1.70rem;
+  text-decoration: none;
+  width: 15%;
+  border: 0;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.createPostButton{
+  float: left;
+  margin-top:10px;
+}
+
+.newPostInput{
+  margin-top:20px;
+  margin-left: 200px;
+  margin-bottom:15px;
+  width:20%;
+  height: 40px;
+  resize: vertical;
+  border-radius:10px;
+  font-size: 20px;
+  color: #634832;
+}
+
+.newPostBtn:hover {
+  background-image: linear-gradient(-180deg, #dbc1ac 0%, #634832 100%);
+}
+
+h1,h2{
+  color: 	#4c3727;
+}
+
+input{
+  width: 10%;
+  padding: 8px 20px;
+  background-color: #dbc1ac;
+}
+
+.bodyInput{
+  height: 200px;
+  width: 60%;
+  padding: 8px 20px;
+  background-color: #dbc1ac;
+  font-size: 14px;
 }

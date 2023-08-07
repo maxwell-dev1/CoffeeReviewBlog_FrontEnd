@@ -5,6 +5,8 @@ import React from 'react';
 import { useLogGood } from '../../../components/LogGoodContext';
 import LoginInputs from '../../../components/LoginInputs';
 import { useUserContext } from '../../../components/UserContext';
+import { useRouter } from 'next/navigation';
+
 
 export default function LoginPage(){
 
@@ -14,6 +16,7 @@ export default function LoginPage(){
     const { logGood, setLogGood} = useLogGood();
     const [activeUser1, setActiveUser1] = useState('');
     const {setActiveUser} = useUserContext();
+    const router = useRouter();
     
 
     const handleInputChange1 = (e) =>{
@@ -59,6 +62,7 @@ export default function LoginPage(){
 
       const FinishLogin = ()=>{
         const text = 'Login successful'
+        router.push('/coffeereviews')
         return(
             <div>
                 <h2>{text}</h2>

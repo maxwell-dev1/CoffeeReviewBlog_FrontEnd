@@ -1,20 +1,17 @@
 'use client';
 import useFetch from '../../../hooks/useFetch'
-// import { useEffect,useState } from "react"
 import React from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link';
+import { useLogGood } from '../../../components/LogGoodContext';
+import { useUserContext } from '../../../components/UserContext';
 
 
 export default function reviewpage(){
     const {loading, error, data} = useFetch('http://localhost:1337/api/coffee-reviews/?populate=*');
-    const router = useRouter();
+    const {logGood} = useLogGood();
+    const {activeUser} = useUserContext();
 
-    const readMore=(id)=>{
-        console.log(id)
-        //line below commented out because I havent yet set up the individual pages for each review
-        // router.push('/coffeereviews/' + id)
-    }
+    console.log('logGood = ' + logGood + '.' + ' active user is: ' + activeUser)
 
     if(loading){
         return <p>Loading...</p>
@@ -27,6 +24,10 @@ export default function reviewpage(){
 
     return (
         <div>
+            <div className='post-button-container'>
+            {logGood && (<Link href='/newpost'> <a>
+            <button class="newPostBtn" role="button">Create new post</button></a></Link>)}
+            </div>
             <h2>Cofee reviews: </h2>
             {data.data.map(review => (
                 <div key={review.id} className='review-card'>
