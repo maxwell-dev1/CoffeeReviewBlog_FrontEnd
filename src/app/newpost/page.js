@@ -24,6 +24,11 @@ const handleSubmit = async (event) =>{
     router.push('/coffeereviews')
 }
 
+const handleCreatePost = async ()=>{
+    
+
+}
+
     return(
         <div>
             <h2>Enter data below to create a new coffee review:</h2>
@@ -45,7 +50,7 @@ const handleSubmit = async (event) =>{
                 <br></br>
                 <input className='newPostInput' type='text' id='brewMethod' name='brewMethod' value={brewMethod} onChange={(e)=>{setBrewMethod(e.target.value)}}></input>
                 <br></br>
-                <button type='submit' className='createPostButton'> Create post</button>
+                <button type='submit' className='createPostButton' onClick={handleCreatePost}> Create post</button>
                 </form>
             </div>
         </div>
