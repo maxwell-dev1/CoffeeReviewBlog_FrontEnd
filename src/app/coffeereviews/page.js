@@ -22,6 +22,9 @@ export default function reviewpage(){
 
     console.log(data);
 
+    //reversing the data array allows me to display most recent entries first
+    data.data.reverse()
+
     return (
         <div>
             <div className='post-button-container'>

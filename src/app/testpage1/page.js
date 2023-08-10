@@ -3,6 +3,7 @@ import { useLogGood } from '../../../components/LogGoodContext';
 import { useUserContext } from '../../../components/UserContext';
 import {useState} from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 
 export default function testPage() {
@@ -14,11 +15,11 @@ export default function testPage() {
   const [imageURL, setImageURL] = useState(null);
   const [file, setFile] = useState(null);
   // const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
 
 
   console.log('Value of logGood:', logGood + '. Value of active user: ' + activeUser);
 
-  const formData = new FormData();
 
   const handleNameChange = (e) =>{
     setName(e.target.value);
@@ -58,22 +59,34 @@ export default function testPage() {
     })
 
     console.log(response.status);
-    console.log(response.data.data.id);
+    const newEntryId = response.data.data.id;
+    console.log(newEntryId);
    
 
     const formData = new FormData();
     formData.append('files', file, '1.png');
+    formData.append('ref', 'api::test.test')
+    formData.append('refId',newEntryId)
+    formData.append('field', 'ProductImage')
     
 
     ///THIS IS HOW TO DO A NORMAL UPLAOD STRAIGHT TO MEDIA LIBRARY NOT TO AN ENTRY
+    // const response2 = await axios.post('http://localhost:1337/api/upload',formData  ,{
+    //   headers:{
+    //     'Authorization' : `Bearer ${myToken}`
+    //   }
+    // }
+    // );
+
+    //SUCCESS! This is how to do an UPLOAD, not entry creation, of a file and associate with a given entry ID
     const response2 = await axios.post('http://localhost:1337/api/upload',formData  ,{
       headers:{
         'Authorization' : `Bearer ${myToken}`
       }
     }
     );
-
     console.log(response2.status)
+    router.push('/coffeereviews')
   }
 
   
@@ -85,7 +98,7 @@ export default function testPage() {
     <div className='testPage'>
       
       <div className='testForm'>
-      <form>
+      <form id='form'>
       <label>Name:</label>
       <input type='text' value={name} onChange={handleNameChange}></input>
       <label>Image:</label>
