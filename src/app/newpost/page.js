@@ -15,19 +15,32 @@ const [title,setTitle] = useState('');
 const [rating,setRating] = useState();
 const [body,setBody] = useState('');
 const [brewMethod,setBrewMethod] = useState('');
+const [file, setFile] = useState(null);
+const [imgURL, setImgURL] = useState(null)
 const router = useRouter();
 
 const handleSubmit = async (event) =>{
     event.preventDefault();
 
-    console.log("submit title:" + title + '. Submitted rating: ' + rating + '. Submitted body: ' + body + " Submitted brewing method: " + brewMethod);
+    console.log("submit title:" + title + '. Submitted rating: ' + rating + '. Submitted body: ' + body + " Brewing method: " + brewMethod);
     router.push('/coffeereviews')
 }
 
-const handleCreatePost = async ()=>{
-    
+const handleFile = (e) =>{
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    if(selectedFile){
+        const reader = new FileReader();
+        reader.onload = (event) =>{
+            setImgURL(event.target.result)
+        }
+        reader.readAsDataURL(selectedFile);
+    }
+    else {setImgURL(null)}
+    console.log(imgURL)
 
 }
+
 
     return(
         <div>
@@ -50,9 +63,13 @@ const handleCreatePost = async ()=>{
                 <br></br>
                 <input className='newPostInput' type='text' id='brewMethod' name='brewMethod' value={brewMethod} onChange={(e)=>{setBrewMethod(e.target.value)}}></input>
                 <br></br>
-                <button type='submit' className='createPostButton' onClick={handleCreatePost}> Create post</button>
+                <label htmlFor='image'><strong>Upload an Image</strong>:</label>
+                {!imgURL && <input type='file' onChange={handleFile} id='image'></input>}                
+                <button type='submit' className='createPostButton'> Create post</button>
                 </form>
-            </div>
+            </div>                
+            {imgURL && <img className='newPostImgPrev' src={imgURL}></img>}
+
         </div>
     )
 }

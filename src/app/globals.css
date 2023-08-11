@@ -169,8 +169,9 @@ body{
 }
 
 .createPostButton{
-  float: left;
+  float: right;
   margin-top:10px;
+  margin-right:170px;
 }
 
 .newPostInput{
@@ -200,10 +201,15 @@ input{
 }
 
 .bodyInput{
-  height: 200px;
+  height: 180px;
   width: 60%;
   padding: 8px 20px;
   background-color: #dbc1ac;
   font-size: 14px;
 }
 
+.newPostImgPrev{
+  margin-left: 200px;
+  height:180px;
+  
+}
