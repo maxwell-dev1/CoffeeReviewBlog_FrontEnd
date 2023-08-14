@@ -65,7 +65,7 @@ export default function testPage() {
    
 
     const formData = new FormData();
-    formData.append('files', file, '1.png');
+    formData.append('files', file);
     formData.append('ref', 'api::test.test')
     formData.append('refId',newEntryId)
     formData.append('field', 'ProductImage')

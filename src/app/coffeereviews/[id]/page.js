@@ -68,7 +68,7 @@ const Details = () => {
             ) :
             (   <div className = 'singleReview'>
                 <div className= 'singleTitle'>
-                <h1>Review {id}: {title}</h1>
+                <h1>{title}</h1>
                 </div>
                 <div className='singleImage'>
                 <img src= {`http://localhost:1337${imgURL}`} />
