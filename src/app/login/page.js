@@ -6,16 +6,17 @@ import { useLogGood } from '../../../components/LogGoodContext';
 import LoginInputs from '../../../components/LoginInputs';
 import { useUserContext } from '../../../components/UserContext';
 import { useRouter } from 'next/navigation';
+import { useJwtContext } from '../../../components/JwtContext';
 
 
 export default function LoginPage(){
 
-    // const [activeUser, setActiveUser] = useState("");
     const [activePass, setActivePass] = useState("");
     const {fetchAPI} = useStrapi();
     const { logGood, setLogGood} = useLogGood();
     const [activeUser1, setActiveUser1] = useState('');
     const {setActiveUser} = useUserContext();
+    const {jwt,setJwt} = useJwtContext();
     const router = useRouter();
     
 
@@ -45,8 +46,9 @@ export default function LoginPage(){
             if(response.status===200){
                 setLogGood(true);
                 setActiveUser(activeUser1)
-                let jwt = response.data.jwt
-                console.log('login succesful. JWT: ' + jwt);
+                const userToken = response.data.jwt
+                console.log('login succesful. JWT: ' + userToken);
+                setJwt(userToken);
             }
             else{
                 console.log('login failed!')
@@ -75,10 +77,12 @@ export default function LoginPage(){
         console.log("Performing logout.")
         setLogGood(false);
         setActiveUser("");
+        setJwt("empty")
       }
 
 
     console.log("Value of logGood:" + logGood);
+    console.log("Token: " + jwt);
 
     return(
         <div className="loginPage">

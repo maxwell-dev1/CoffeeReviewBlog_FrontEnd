@@ -2,6 +2,7 @@
 import {useState} from 'react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios'
+import { useJwtContext } from '../../../components/JwtContext';
 
 export default function newPostPage(){
 
@@ -12,7 +13,8 @@ const [brewMethod,setBrewMethod] = useState('');
 const [file, setFile] = useState(null);
 const [imgURL, setImgURL] = useState(null)
 const router = useRouter();
-const superToken = '0da196ac90a697a22e3129cfa649885b5ee066d9bfb436d9ed546a89dd77c536b0732e13307e158a5cb222dff08b918553976e8e56e12002709e55988277d32d6638ce7db4a82cac47cd3e6939b5d0ad670972461372794fe7313781376f80f74ec66174cd8e99e41bba828d52bb68ec2e69a7575abe9ddf99020a7f78a4809e'
+const {jwt} = useJwtContext();
+const superToken = jwt
 
 const handleSubmit = async (event) =>{
     event.preventDefault();

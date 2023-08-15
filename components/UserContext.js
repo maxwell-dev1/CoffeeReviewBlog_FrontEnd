@@ -7,7 +7,6 @@ export function useUserContext(){
 }
 
 export function UserContextProvider({children}){
-    // const [activeUser, setActiveUser] = useState('');
     const [activeUser, setActiveUser] = useState(() => {
         // Get the value from local storage during initialization
         return JSON.parse(localStorage.getItem('activeUser')) || "";

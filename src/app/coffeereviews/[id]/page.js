@@ -54,10 +54,12 @@ const Details = () => {
      let rating=review.data?.attributes.Rating;
      let imgURL= review.data?.attributes.ProductImage.data[0].attributes.formats.medium.url;
      let body = review.data?.attributes.Body;
+     let author = review.data?.attributes.Author;
      console.log(rating);
      console.log(title);
      console.log(id)
      console.log(imgURL)
+     console.log(author)
     return (
 
         <div >
@@ -70,11 +72,12 @@ const Details = () => {
                 <div className= 'singleTitle'>
                 <h1>{title}</h1>
                 </div>
-                <div className='singleImage'>
-                <img src= {`http://localhost:1337${imgURL}`} />
+                <div className='singleImageCon'>
+                <img className='singleImage' src= {`http://localhost:1337${imgURL}`} />
                 </div>
                 <div className='singleBody'>
                 <p>{body}</p>
+                <p>Author: {author}</p>
                 </div>
                 </div>
             )}

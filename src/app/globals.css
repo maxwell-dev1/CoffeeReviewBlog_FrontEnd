@@ -12,6 +12,7 @@
   margin: 60px auto;
   padding: 1px 20px 20px 90px;
   position: relative;
+  /* height:240px; */
 }
 
 
@@ -61,10 +62,48 @@ body{
   color:white;
 }
 
-.singleImage{
-  display:flex;
+.readMoreDiv{
+  float:right;
+  margin-right:40px
+}
+
+.reviewPageImg{
+  border-radius: 10px;;
+}
+.detailsPreview{
+  /* margin-left:350px; */
+  color:black;
+  min-width: 50px;
+  max-width:700px;
+  width:700px;
+  margin-bottom:200px;
+  padding-left: 350px;
+  /* display:flex;
+  justify-content: right; */
+}
+
+.authorPrev{
+  /* padding-left:200px; */
+  /* padding-right:200px; */
+  width:300px;
+  margin-top: 10px;
+
+  /* margin-bottom:50px; */
+}
+
+/* I use centering in the div container to center stuff within it */
+/* .singleImageCon{
+  display:flex; 
   justify-content: center;
-  border-radius: 5px;
+} */
+/* I need to give border-radius to the image directly instaed of its container  */
+.singleImage{
+  border-radius: 15px;
+  margin-left:50px;
+}
+.singleBody{
+  margin-left:50px;
+  font-size:20px;
 }
 
 .footerItem{

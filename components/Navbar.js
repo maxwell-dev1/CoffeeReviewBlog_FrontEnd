@@ -2,14 +2,17 @@
 import React, { useState } from 'react';
 import { useLogGood } from '/components/LogGoodContext';
 import { useUserContext } from 'components/UserContext';
+import { useJwtContext } from './JwtContext';
 
 const Navbar = () => {
   const { logGood, setLogGood } = useLogGood();
-  const {activeUser,setActiveUser} = useUserContext();
+  const {setActiveUser} = useUserContext();
+  const {setJwt} = useJwtContext();
   
   function logOut(){
     setLogGood(false);
     setActiveUser("");
+    setJwt("empty")
   }
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -26,9 +29,9 @@ const Navbar = () => {
       <li>
         <a className="navLink" href="/home">Home</a>
       </li>
-      <li>
+      {/* <li>
         <a className="navLink" href="/testpage1">Test Page 1</a>
-      </li>
+      </li> */}
       <li>
       <div className="navDropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
             <a className="navLink" >User menu</a>
