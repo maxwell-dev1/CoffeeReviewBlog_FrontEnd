@@ -15,11 +15,13 @@ const Details = () => {
     thisURL =thisURL.split('/')
     //collect that last element of the array above
     let lastSeg = thisURL.pop();
+    let imgURL = null;
 
     const [review, setData] = useState({});
     //We use a loading state to make sure the details are ready to be displayed..otherwise they wont render until the user refreshes the page because the page is rendering
     //before the fetch is complete
     const [loading, setLoading] = useState(true)
+    let noImg = false;
 
 
     useEffect(() => {
@@ -52,13 +54,19 @@ const Details = () => {
      let id = review.data?.id
      let title = review.data?.attributes.Title;
      let rating=review.data?.attributes.Rating;
-     let imgURL= review.data?.attributes.ProductImage.data[0].attributes.formats.medium.url;
+     if(review.data?.attributes.ProductImage.data){
+         noImg = true;
+         imgURL= review.data?.attributes.ProductImage.data[0].attributes.formats.medium.url;
+     }
      let body = review.data?.attributes.Body;
      let author = review.data?.attributes.Author;
+     let brew = review.data?.attributes.BrewingMethod;
      console.log(rating);
      console.log(title);
      console.log(id)
+     if(!noImg){
      console.log(imgURL)
+     }
      console.log(author)
     return (
 
@@ -73,11 +81,12 @@ const Details = () => {
                 <h1>{title}</h1>
                 </div>
                 <div className='singleImageCon'>
-                <img className='singleImage' src= {`http://localhost:1337${imgURL}`} />
+                {imgURL ? (<img className='singleImage' src= {`http://localhost:1337${imgURL}`}/>) : (<p id='noImgText'>(no image)</p>)}
                 </div>
                 <div className='singleBody'>
-                <p>{body}</p>
-                <p>Author: {author}</p>
+                <p><strong>Review</strong>: {body}</p>
+                <p><strong>Brew Method </strong>: {brew}</p>
+                <p><strong>Author</strong>: {author}</p>
                 </div>
                 </div>
             )}

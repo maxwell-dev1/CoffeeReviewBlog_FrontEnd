@@ -87,7 +87,7 @@ body{
   /* padding-right:200px; */
   width:300px;
   margin-top: 10px;
-
+  margin-left:-10px;
   /* margin-bottom:50px; */
 }
 
@@ -104,6 +104,11 @@ body{
 .singleBody{
   margin-left:50px;
   font-size:20px;
+}
+
+#noImgText{
+  display: flex;
+  justify-content: center;
 }
 
 .footerItem{
