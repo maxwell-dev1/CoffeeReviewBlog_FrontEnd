@@ -52,7 +52,7 @@ export default function reviewpage(){
                  <h3>Rating: {review.attributes.Rating}</h3>
                  {/* </div> */}
                  {/* <div className='detailsPreview'> */}
-                 <p className='detailsPreview'><strong>Details</strong>: {review.attributes.Body.substring(0,60)}...<p className='authorPrev'><strong>Author</strong>: ChrisP</p></p>
+                 <p className='detailsPreview'><strong>Details</strong>: {review.attributes.Body.substring(0,60)}...<div className='authorPrev'><strong>Author</strong>: ChrisP</div></p>
                  
                  </div>
                  {/* Dyanmic routing stuff below */}

@@ -3,6 +3,7 @@ import {useState} from 'react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios'
 import { useJwtContext } from '../../../components/JwtContext';
+import { useUserContext } from '../../../components/UserContext';
 
 export default function newPostPage(){
 
@@ -14,7 +15,7 @@ const [file, setFile] = useState(null);
 const [imgURL, setImgURL] = useState(null)
 const router = useRouter();
 const {jwt} = useJwtContext();
-const superToken = jwt
+const {activeUser} = useUserContext();
 
 const handleSubmit = async (event) =>{
     event.preventDefault();
@@ -25,24 +26,32 @@ const handleSubmit = async (event) =>{
             "Rating" : rating,
             "Title": title,
             "Body": body,
-            "BrewingMethod": brewMethod
+            "BrewingMethod": brewMethod,
+            "Author": activeUser
+        }
+    },{
+        headers:{
+            'Authorization': `Bearer ${jwt}`
         }
     })
     console.log(postText.status);
     const id = postText.data.data.id;
 
-    const formData =   new FormData();
-    formData.append('files',file)
-    formData.append('ref','api::coffee-review.coffee-review')
-    formData.append('refId',id)
-    formData.append('field','ProductImage')
+    if(imgURL!==null){
+        const formData =   new FormData();
+        formData.append('files',file)
+        formData.append('ref','api::coffee-review.coffee-review')
+        formData.append('refId',id)
+        formData.append('field','ProductImage')
 
-    const postImg = await axios.post('http://localhost:1337/api/upload',formData, {
-        headers:{
-            'Authorization': `Bearer ${superToken}`
-        }
-    })
-    console.log(postImg.status);
+        const postImg = await axios.post('http://localhost:1337/api/upload',formData, {
+            headers:{
+                'Authorization': `Bearer ${jwt}`
+            }
+        })
+        console.log(postImg.status);
+    }
+
     router.push('/coffeereviews')
 }
 

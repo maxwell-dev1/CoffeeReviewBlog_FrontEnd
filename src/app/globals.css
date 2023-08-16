@@ -267,6 +267,7 @@ input{
 .imageInput{
   width: 200px;
   margin-left:70px;
+  border-radius:10px;
 }
 
 label{
