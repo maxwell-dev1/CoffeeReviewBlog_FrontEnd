@@ -13,6 +13,7 @@
   padding: 1px 20px 20px 90px;
   position: relative;
   /* height:240px; */
+  border-radius:30px;
 }
 
 
@@ -60,6 +61,10 @@ body{
   height:90px;
   text-align:center;
   color:white;
+  border-radius:15px;
+}
+.readMoreLink{
+  color:#38220f;
 }
 
 .readMoreDiv{
@@ -272,4 +277,24 @@ input{
 
 label{
   color:	#38220f
+}
+
+.regIn{
+  margin-left:15px;
+  border-radius: 10px;
+  width:130px;
+}
+.regIn2{
+  margin-left:25px;
+  border-radius: 10px;
+  width:130px;
+}
+.regIn3{
+  margin-left:25px;
+  border-radius:10px;
+  width:200px;
+}
+.loginIn{
+  border-radius: 10px;
+  margin-left:10px;
 }

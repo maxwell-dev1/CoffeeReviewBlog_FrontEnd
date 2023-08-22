@@ -3,6 +3,7 @@ import useStrapi from "../../../hooks/useStrapi"
 import React from 'react';
 //app router migration below we use /navigation instead of router
 import { useRouter } from 'next/navigation'
+import {useState} from 'react'
 
 
 export default function register(){
@@ -12,13 +13,16 @@ export default function register(){
     //we make a router constant here for the useRouter to be simpler
     const router = useRouter();
     const [regClicked, setRegClicked] = React.useState(false);
+    const [regUser, setRegUser] = useState('')
+    const [regPass, setRegPass] = useState('')
+    const [email, setEmail] = useState('')
 
 
     const handleRegistration = async () =>{
         const userToRegister = {
-            "username": "ChrisP",
-            "email": "ChrisP@gmail.com",
-            "password": "Donkeys"
+            "username": regUser,
+            "email": email,
+            "password": regPass
         }
         try{
             //here we pass two arguemtns to fetchAPI in useStrapi.js . the first one becomes the path variable, the second argument becomes 
@@ -67,13 +71,33 @@ export default function register(){
             </div>)
     }
 
+    function handleRegUser(e){
+        setRegUser(e.target.value)
+    }
+    function handleRegPass(e){
+        setRegPass(e.target.value)
+    }
+    function handleEmail(e){
+        setEmail(e.target.value)
+    }
+
+    console.log(regUser +  regPass)
 
  
 
     return (
     <div>
     <h1>Welcome to registration page : </h1>
-    <button onClick={handleRegistration}>Register User</button>
+    {!regGood && (<div><label>Email address</label>
+    <input className="regIn3" value={email} onChange={handleEmail}></input>
+    <br></br>
+    <label>New username</label>
+    <input className="regIn" type="text" value={regUser} onChange={handleRegUser}></input>
+    <br></br>
+    <label>Set password</label>
+    <input className="regIn2" type="password" value={regPass} onChange={handleRegPass}></input>
+    <br></br>
+    <button onClick={handleRegistration}>Register User</button></div>)}
     {regGood && <FinishReg/>}
     {regClicked && !regGood && <FailReg/>}
     {/* <ConditionalComponent regGood={regGood} /> */}

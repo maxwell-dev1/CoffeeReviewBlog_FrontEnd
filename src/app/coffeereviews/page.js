@@ -12,6 +12,7 @@ export default function reviewpage(){
     const {logGood} = useLogGood();
     const {activeUser} = useUserContext();
     const {jwt} = useJwtContext();
+    let author = "";
     console.log('logGood = ' + logGood + '.' + ' active user is: ' + activeUser)
 
     if(loading){
@@ -46,13 +47,13 @@ export default function reviewpage(){
                             <div className="noImagePlaceholder">No Image</div>
                         )}
                  <Link className="readMoreDiv" href={`/coffeereviews/${review.id}`} key={review.id}>
-                    <h3>Read More</h3>
+                    <h3 className='readMoreLink'>Read More</h3>
                  </Link></div>
                  <div className='rating'>
                  <h3>Rating: {review.attributes.Rating}</h3>
                  {/* </div> */}
                  {/* <div className='detailsPreview'> */}
-                 <p className='detailsPreview'><strong>Details</strong>: {review.attributes.Body.substring(0,60)}...<div className='authorPrev'><strong>Author</strong>: ChrisP</div></p>
+                 <p className='detailsPreview'><strong>Details</strong>: {review.attributes.Body.substring(0,60)}...<div className='authorPrev'><strong>Author</strong>: {review.attributes.Author}</div></p>
                  
                  </div>
                  {/* Dyanmic routing stuff below */}
