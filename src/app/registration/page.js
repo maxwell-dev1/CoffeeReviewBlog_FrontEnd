@@ -9,7 +9,7 @@ import {useState} from 'react'
 export default function register(){
 
     const {fetchAPI} = useStrapi();
-    const [regGood, setRegGood] = React.useState(false);
+    const [regGood, setRegGood] = React.useState(true);
     //we make a router constant here for the useRouter to be simpler
     const router = useRouter();
     const [regClicked, setRegClicked] = React.useState(false);
@@ -52,7 +52,7 @@ export default function register(){
 
     //this is how we change pages using next JS 13 app router migration
     const changePages = () =>{
-        router.push('/testpage1')
+        router.push('/coffeereviews')
     }
 
     const FinishReg = () =>{
@@ -88,7 +88,8 @@ export default function register(){
     return (
     <div>
     <h1>Welcome to registration page : </h1>
-    {!regGood && (<div><label>Email address</label>
+    <p>Login Credentials are case sensitive!</p>
+    {!regClicked && (<div><label>Email address</label>
     <input className="regIn3" value={email} onChange={handleEmail}></input>
     <br></br>
     <label>New username</label>
@@ -98,7 +99,7 @@ export default function register(){
     <input className="regIn2" type="password" value={regPass} onChange={handleRegPass}></input>
     <br></br>
     <button onClick={handleRegistration}>Register User</button></div>)}
-    {regGood && <FinishReg/>}
+    {regClicked && regGood && <FinishReg/>}
     {regClicked && !regGood && <FailReg/>}
     {/* <ConditionalComponent regGood={regGood} /> */}
     </div>);

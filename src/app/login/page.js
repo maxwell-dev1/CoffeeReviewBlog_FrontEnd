@@ -86,7 +86,9 @@ export default function LoginPage(){
 
     return(
         <div className="loginPage">
-            <p>Welcome to login page</p>
+            <h2>Welcome to login page</h2>
+            <p>Login Credentials are case sensitive!</p>
+
                 {!logGood && (
         <LoginInputs
           activeUser={activeUser1}
