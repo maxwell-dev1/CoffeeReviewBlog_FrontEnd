@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.10",
     "axios": "^1.4.0",
     "graphql": "^16.7.1",
     "next": "13.4.10",

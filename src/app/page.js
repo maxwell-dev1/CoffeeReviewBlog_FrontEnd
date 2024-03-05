@@ -1,107 +1,71 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client'
-
-export default function RootPage() {
-
-//apollo Client 
-const client = new ApolloClient({
-  uri: 'http://localhost:1337/graphql',
-  cache: new InMemoryCache()
-})
+'use client';
+import useFetch from '/hooks/useFetch'
+import React from 'react'
+import Link from 'next/link';
+import { useLogGood } from '/components/LogGoodContext';
+import { useUserContext } from '/components/UserContext';
+import { useJwtContext } from '/components/JwtContext';
+import { Typography , Button, Paper, Card} from '@mui/material';
 
 
+export default function rootpage(){
+    const {loading, error, data} = useFetch('http://localhost:1337/api/coffee-reviews/?populate=*');
+    const {logGood} = useLogGood();
+    const {activeUser} = useUserContext();
+    const {jwt} = useJwtContext();
+    console.log('logGood = ' + logGood + '.' + ' active user is: ' + activeUser)
 
+    if(loading){
+        return <p>Loading...</p>
+    }
+    if(error){
+        return <p>Error!...Failed to fetch info from Strapi back end</p>
+    }
 
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
+    console.log(data);
+    console.log(jwt)
 
+    //reversing the data array allows me to display most recent entries first
+    data.data.reverse()
+
+    //use data.data to access JSON details
+    return (
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            
+            {/* Title texts */}
+            <div className='landingTitlesContainer'>
+            <Typography variant='h5' sx={{letterSpacing:6, marginTop:2 , marginLeft:32, color:'#dbc1ac'}}>Featured Articles: </Typography>
+            <Typography variant='h5' sx={{letterSpacing:6, marginTop:2 , marginLeft:74, color:'#dbc1ac'}}>Recent Posts: </Typography>
+            </div>
+            
+            {/* Div contains both recent posts carousel and featured articles  but not their text titles above them*/}
+            <div className="homeCardCont">
+                <Paper className="homeTopCards" elevation={16} sx={{backgroundColor:"#634832", marginLeft:10,borderRadius:2}} >
+                    {data.data.map(review => (
+                        <Card elevation={8} sx={{backgroundColor:"#dbc1ac",marginTop:2,marginBottom:6}}>
+                            <Typography variant='h4' sx={{marginLeft:2}}>{review.attributes.Title}</Typography>
+                        </Card>
+                    ))} 
+                </Paper>
+                <Paper className="homeTopCards2" sx={{backgroundColor:"black",marginLeft:10,borderRadius:2}} >
+                    <Typography sx={{color:"white"}}>Carousel here</Typography>
+                   
+                </Paper>
+            </div>
+
+
         </div>
-      </div>
+    )
+};
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+ {/* {data.data.map(review => (
+                <Typography variant='h7'>{review.attributes.Title}</Typography>
+            ))} */} {/* <Paper sx={{color:"white"}} elevation={24}>blah blah</Paper>
+                    <Card sx={{color:"white"}} elevation={4}>blah blah</Card>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
-}
+                    {data.data.map(review => (
+                        <Typography variant='h4'>{review.attributes.Title}</Typography>
+                    ))}  */}
