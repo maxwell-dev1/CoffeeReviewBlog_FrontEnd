@@ -47,6 +47,9 @@ const Navbar = () => {
       <li>
         <a className="navLink" href = "/coffeereviews">Coffee Reviews</a>
       </li>
+      <li>
+        <a href='/learn'>Learn Coffee</a>
+      </li>
     </ul>
     </div>
   )

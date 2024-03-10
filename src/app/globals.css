@@ -8,30 +8,26 @@
 }
 
 .review-card{
-  background:linear-gradient(rgb(163, 138, 105,.9),rgb(99,72,50,.9));
+  background:linear-gradient(rgb(163, 138, 105,.75),rgba(56, 41, 29, 0.928));
   margin: 60px auto;
   padding: 1px 20px 20px 90px;
   position: relative;
-  /* height:240px; */
-  border-radius:30px;
+  border-radius:10px;
 }
 
 .navLinks{
     box-shadow: 0px 0px 10px #dbc1ac;
     border-radius: 10px;
+      background-image: linear-gradient(rgba(219, 193, 172, .2), rgba(56, 34, 15, 0.75)), url('/navBeans1.jpg');
+  background-size: cover;
 }
 
-/* boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1', borderRadius: '10px' */
 .navLinks ul {
-
-  /* border:1px solid #ece0d1; */
   text-decoration: none;
   list-style: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(rgba(219, 193, 172, 0), rgba(56, 34, 15, 0.7)), url('/navBeans1.jpg');
-  background-size: cover;
   height: 150px; /* Adjust this value as needed */
   padding: 0; /* Remove any default padding or margins */
   margin: 0;
@@ -75,9 +71,27 @@ body{
   color:white;
   border-radius:15px;
 }
-.readMoreLink{
-  color:#38220f;
+
+
+
+.lato-thin {
+  font-family: "Lato", sans-serif;
+  font-weight: lighter;
+  font-style: normal;
 }
+
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+}
+
 
 .readMoreDiv{
   float:right;
@@ -291,24 +305,14 @@ label{
   color:	#38220f
 }
 
-.regIn{
-  margin-left:15px;
-  border-radius: 10px;
-  width:130px;
-}
-.regIn2{
-  margin-left:25px;
-  border-radius: 10px;
-  width:130px;
-}
-.regIn3{
-  margin-left:25px;
-  border-radius:10px;
-  width:200px;
-}
+
 .loginIn{
   border-radius: 10px;
   margin-left:10px;
+  font-size:24px;
+  width:30%;
+  margin-top:4px;margin-bottom: 40px;
+  
 }
 
 

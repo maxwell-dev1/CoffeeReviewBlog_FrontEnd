@@ -7,6 +7,7 @@ import LoginInputs from '../../../components/LoginInputs';
 import { useUserContext } from '../../../components/UserContext';
 import { useRouter } from 'next/navigation';
 import { useJwtContext } from '../../../components/JwtContext';
+import {Paper} from '@mui/material'
 
 
 export default function LoginPage(){
@@ -85,10 +86,14 @@ export default function LoginPage(){
     console.log("Token: " + jwt);
 
     return(
-        <div className="loginPage">
+        // <div className="loginPage">
+        <div style={{display:"flex",justifyContent:"end", marginRight:"40px"}}>
+            <Paper 
+        sx={{backgroundColor:"#967259",height:"600px",borderRadius:10, marginTop:6, width:"25%",
+         background:"linear-gradient(rgb(163, 138, 105,.85),rgba(56, 41, 29, 0.95))",boxShadow: '0px 0px 15px 5px #dbc1ac', border: '1px .55 #ece0d1',
+         textAlign:"center"}}>
             <h2>Welcome to login page</h2>
             <p>Login Credentials are case sensitive!</p>
-
                 {!logGood && (
         <LoginInputs
           activeUser={activeUser1}
@@ -99,6 +104,7 @@ export default function LoginPage(){
         />
       )}
                 {logGood && <FinishLogin/>}
+                </Paper>
         </div>
     )
 }

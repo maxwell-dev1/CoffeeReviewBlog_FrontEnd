@@ -4,6 +4,7 @@ import React from 'react';
 //app router migration below we use /navigation instead of router
 import { useRouter } from 'next/navigation'
 import {useState} from 'react'
+import { Button, Paper, Typography } from "@mui/material";
 
 
 export default function register(){
@@ -86,21 +87,40 @@ export default function register(){
  
 
     return (
-    <div>
-    <h1>Welcome to registration page : </h1>
-    <p>Login Credentials are case sensitive!</p>
-    {!regClicked && (<div><label>Email address</label>
-    <input className="regIn3" value={email} onChange={handleEmail}></input>
-    <br></br>
-    <label>New username</label>
-    <input className="regIn" type="text" value={regUser} onChange={handleRegUser}></input>
-    <br></br>
-    <label>Set password</label>
-    <input className="regIn2" type="password" value={regPass} onChange={handleRegPass}></input>
-    <br></br>
-    <button onClick={handleRegistration}>Register User</button></div>)}
-    {regClicked && regGood && <FinishReg/>}
-    {regClicked && !regGood && <FailReg/>}
-    {/* <ConditionalComponent regGood={regGood} /> */}
+        // The styling on this div simply places the registration panel in the center of the page.
+    <div style={{justifyContent:"center", display:"flex"}}> 
+
+        <Paper 
+        sx={{backgroundColor:"#967259",height:"600px",borderRadius:10, marginTop:6, width:"45%",
+         background:"linear-gradient(rgb(163, 138, 105,.85),rgba(56, 41, 29, 0.95))",boxShadow: '0px 0px 15px 5px #dbc1ac', border: '1px .55 #ece0d1',
+         textAlign:"center"}}>
+
+            <Typography variant="h4" style={{ marginLeft:20, paddingTop:22,textAlign:"center", color:"#dbc1ac",textShadow: "0px 2px 4px rgba(0, 0, 0, .8)", }}>Welcome to registration page : </Typography>
+            
+
+
+            <Typography style={{marginLeft:8, marginTop:20, marginBottom:20,color:"#dbc1ac",textShadow: "0px 2px 4px rgba(0, 0, 0, .8)",fontFamily:"Lato, sans-serif"}}>Credentials are case sensitive!</Typography>
+            
+            {/* if the user hasnt clicked the register button yet display all the inputs so they can attempt to */}
+            {!regClicked && 
+            (<div>
+            <Typography sx={{color:"#dbc1ac", fontSize:18, marginBottom:1,textShadow: "0px 2px 4px rgba(0, 0, 0, .8)"}}>Email address</Typography>
+            <input className="loginIn" value={email} onChange={handleEmail} style={{boxShadow:"0px 5px 10px -5px #000000", fontFamily:"Lato"}}></input>
+            <Typography sx={{color:"#dbc1ac",fontSize:18, marginBottom:1,textShadow: "0px 2px 4px rgba(0, 0, 0, .8)"}}>New username</Typography>
+            <input className="loginIn" type="text" value={regUser} onChange={handleRegUser} style={{boxShadow:"0px 5px 10px -5px #000000"}}></input>
+            <Typography sx={{color:"#dbc1ac",fontSize:18, marginBottom:1,textShadow: "0px 2px 4px rgba(0, 0, 0, .8)"}}>Set password</Typography>
+            <input className="loginIn" type="password" value={regPass} onChange={handleRegPass} style={{boxShadow:"0px 5px 10px -5px #000000"}}></input>
+
+            <br></br>
+            <Button onClick={handleRegistration}  sx={{color:"#dbc1ac", '&:hover': {backgroundColor: '#dbc1ac', color:"black"}, marginTop:3,boxShadow:"0px 5px 10px -5px #000000", width:"20%",borderRadius:2}}>
+                Register User</Button></div>)}
+
+
+
+            {regClicked && regGood && <FinishReg/>}
+            {regClicked && !regGood && <FailReg/>}
+        </Paper>
+
+
     </div>);
 }

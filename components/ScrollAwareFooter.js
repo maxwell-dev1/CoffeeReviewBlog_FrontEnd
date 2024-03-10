@@ -18,7 +18,7 @@ const ScrollAwareFooter = () => {
   }, []);
 
   return (
-    <footer className={`footer ${showFooter ? 'show' : 'hide'}`}>
+    <footer className={`footer ${showFooter ? 'show' : 'hide'}`} style={{color:"#dbc1ac"}}>
       <p className="footerItem">About</p>
       <p className="footerItem">Contact</p>
       <p className="footerItem">Copyright</p>
