@@ -7,7 +7,7 @@ import LoginInputs from '../../../components/LoginInputs';
 import { useUserContext } from '../../../components/UserContext';
 import { useRouter } from 'next/navigation';
 import { useJwtContext } from '../../../components/JwtContext';
-import {Paper} from '@mui/material'
+import {Paper, Typography} from '@mui/material'
 
 
 export default function LoginPage(){
@@ -19,6 +19,8 @@ export default function LoginPage(){
     const {setActiveUser} = useUserContext();
     const {jwt,setJwt} = useJwtContext();
     const router = useRouter();
+
+    const [loginWorked,setLoginWorked] = useState(true);
     
 
     const handleInputChange1 = (e) =>{
@@ -45,6 +47,7 @@ export default function LoginPage(){
                 data: loginData
             });
             if(response.status===200){
+                setLoginWorked(true);
                 setLogGood(true);
                 setActiveUser(activeUser1)
                 const userToken = response.data.jwt
@@ -58,18 +61,23 @@ export default function LoginPage(){
 
         }
         catch(error){
+            console.log('login failed: ' + error.message + "!!!! CODE: " + error.response.status)
+            setLoginWorked(false);
+            if(error.response.status === 400)
+            {            
+                console.log("Its likely that this user does not exist in your local instance, in your strapi remote instance, or that it's password is not defined because you used an export tool. Try registering a new user.")
+            }            
             console.log(error);
         }
       };
 
 
       const FinishLogin = ()=>{
-        const text = 'Login successful'
+
         router.push('/coffeereviews')
         return(
             <div>
-                <h2>{text}</h2>
-                <button onClick={logOut}>Logout</button>
+                <Typography variant='h6' sx={{color:"#dbc1ac"}} >Login Success! Routing you to cofee reviews page...</Typography>
             </div>
         )
       }
@@ -104,7 +112,12 @@ export default function LoginPage(){
         />
       )}
                 {logGood && <FinishLogin/>}
+
+
+                {!loginWorked && <h3>Login failed...</h3>}
+
                 </Paper>
+
         </div>
     )
 }

@@ -6,7 +6,7 @@ const ScrollAwareFooter = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight -150;
+      const scrolledToBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight -55;
       setShowFooter(scrolledToBottom);
     };
 
