@@ -96,18 +96,9 @@ export default function testPage() {
 
 
     return (
-    <div className='testPage'>
+    <div >
       
-      <div className='testForm'>
-      <form id='form'>
-      <label>Name:</label>
-      <input type='text' value={name} onChange={handleNameChange}></input>
-      <label>Image:</label>
-      <input type='file' onChange={handleFileChange} ></input>
-      <button type='submit' accept="image/*" onClick={handleSubmit}>Submit</button>
-      </form>
-      </div>
-      { imageURL && <img src={imageURL} alt='Selected' />}
+      
       </div>
     )
     

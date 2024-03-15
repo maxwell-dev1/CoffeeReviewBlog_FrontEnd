@@ -12,12 +12,15 @@
     "@apollo/client": "^3.7.17",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.15.10",
+    "@mui/icons-material": "^5.15.13",
+    "@mui/material": "^5.15.13",
+    "@mui/styles": "^5.15.13",
     "axios": "^1.4.0",
     "graphql": "^16.7.1",
     "next": "13.4.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-material-ui-carousel": "^3.4.2",
     "swr": "^2.2.0"
   }
 }
