@@ -4,6 +4,7 @@ import { useLogGood } from '/components/LogGoodContext';
 import { useUserContext } from 'components/UserContext';
 import { useJwtContext } from './JwtContext';
 
+
 const Navbar = () => {
   const { logGood, setLogGood } = useLogGood();
   const {setActiveUser} = useUserContext();
@@ -38,15 +39,19 @@ const Navbar = () => {
             {showDropdown && (
               <div className="dropdownContent">
                 <a href="/registration">New Users</a>
-                <a href="/login">Login</a>
+                {!logGood && <a href="/login">Login</a>}
                 {logGood && <a href="" onClick={logOut}>Logout</a>}
               </div>
             )}
           </div>      
       </li>
       <li>
+        <a href='/'><img src='/logo1.png' height={100} width={100} style={{borderRadius:50,marginLeft:24}}></img></a>
+      </li>
+      <li>
         <a className="navLink" href = "/coffeereviews">Coffee Reviews</a>
       </li>
+      
       <li>
         <a href='/learn'>Learn Coffee</a>
       </li>
