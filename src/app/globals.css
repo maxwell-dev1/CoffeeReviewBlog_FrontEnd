@@ -20,6 +20,7 @@
     border-radius: 10px;
       background-image: linear-gradient(rgba(219, 193, 172, .2), rgba(56, 34, 15, 0.75)), url('/navBeans1.jpg');
   background-size: cover;
+  width:100%;
 }
 
 
@@ -328,22 +329,21 @@ label{
   margin-left: 40px;
 }
 
-.homeTopCards {
-  width: 30%;
+/* .homeTopCards {
+  width: 45%;
   height: 80vh;
-  border: 2px solid #b08769; /* Dark brown border */
-  border-radius: 15px; /* Rounded edges */
-  margin-right: 4%; /* Margin to separate the two boxes */
-  margin-right: 60px; /* Margin to separate the two boxes */
-}
+  border: 2px solid #b08769;
+  border-radius: 12px; 
+  margin-right: 4%; 
 
-.homeTopCards2 {
-  width: 50%;
+} */
+
+/* .carouselHome {
+  width: 40%;
   height: 80vh;
-  border: 2px solid #654321; /* Dark brown border */
-  border-radius: 15px; /* Rounded edges */
-  background-color: black;
-}
+  border: 2px solid #654321; 
+  border-radius: 15px; 
+} */
 
 .landingTitlesContainer {
   display: flex;

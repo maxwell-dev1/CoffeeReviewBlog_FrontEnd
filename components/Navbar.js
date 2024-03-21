@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     
     <div className='navLinks'>
-    <ul>
+    <ul style={{width:"100%"}}>
       <li>
         <a className="navLink" href="/">Home</a>
       </li>

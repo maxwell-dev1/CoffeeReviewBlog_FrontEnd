@@ -35,22 +35,27 @@ export default function Tester2() {
 
 
     return (
+
         <div className="carouselContainer">
             <Box sx={{ width: '80%', margin: '0 auto', height: '140%', '& .css-1m9128y': { marginTop: '30px' } }}>
+                
                 <Carousel sx={{ backgroundColor: 'black', color: 'black', borderRadius: '15px', height: '70%', width: '75%', margin: '0 auto' }}>
+                    
                     {reviewImages.map((image, i) => (
                         <Paper key={i} sx={{ backgroundColor: 'black', marginTop: '20px', height: '60%' }}>
                             <Box sx={{ width: '100%', height: '640px', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', margin: '0 auto' }}>
-                                <a href={reviewLinks[i]}><img
-                                    src={image}
-                                    alt={`Review Image ${i}`}
-                                    style={{ maxWidth: '100%', maxHeight: '100%',borderRadius:10 }}
-                                /></a>
+                                <a href={reviewLinks[i]}>
+                                    <img src={image} alt={`Review Image ${i}`} style={{ maxWidth: '100%', maxHeight: '100%',borderRadius:10 }}/>
+                                </a>
                             </Box>
+
                         </Paper>
                     ))}
                 </Carousel>
             </Box>
         </div>
+        
+
+
     );
 }
