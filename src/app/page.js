@@ -51,7 +51,7 @@ export default function rootpage(){
             {/* Title texts */}
             <div className='landingTitlesContainer'>
             <Typography  sx={{letterSpacing:6, marginTop:2 , marginLeft:48, color:'#dbc1ac', fontSize:32}}>Featured Articles: </Typography> {/* replace with data for learn cofee articles instead of reviews */}
-            <Typography  sx={{letterSpacing:6, marginTop:2 , marginLeft:62, color:'#dbc1ac', marginBottom:2, fontSize:32}}>Recent Reviews: </Typography>
+            <Typography  sx={{letterSpacing:6, marginTop:2 , marginLeft:66, color:'#dbc1ac', fontSize:32}}>Recent Reviews: </Typography>
             </div>
             
             {/* Div contains both recent posts carousel and featured articles  but not their text titles above them   */}
@@ -65,18 +65,19 @@ export default function rootpage(){
                     ))} {/* replace with data for learn cofee articles instead of reviews */}
                 </Paper>
 
+{/* 
+                <Paper className="carouselHome" sx={{backgroundColor:"black",marginLeft:10,borderRadius:2, height:"80vh", width:"42%"}} > */}
 
-                <Paper className="carouselHome" sx={{backgroundColor:"black",marginLeft:10,borderRadius:2, height:"80vh", width:"42%",}} >
-                <div className="carouselContainer">
-                    <Box sx={{ width: '80%', margin: '0 auto', height: '140%', '& .css-1m9128y': { marginTop: '30px' } }}>
-                        
-                        <Carousel sx={{ backgroundColor: 'black', color: 'black', borderRadius: '15px', height: '70%', width: '75%', margin: '0 auto' }}>
+                    {/* <Box sx={{ width: '100%', margin: '0 auto', height: '100%', '& .css-1m9128y': { marginTop: '30px' } }}> */}
+                    <Box sx={{ width: "40%",  marginLeft:14, '& .css-1m9128y': { marginTop: '28px' } ,}}>
+
+                        <Carousel sx={{  borderRadius: '12px',  width: '100%'  }}>
                             
                             {reviewImages.map((image, i) => (
-                                <Paper key={i} sx={{ backgroundColor: 'black', marginTop: '20px', height: '60%' }}>
-                                    <Box sx={{ width: '100%', height: '640px', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', margin: '0 auto' }}>
+                                <Paper key={i} sx={{ backgroundColor: 'black', marginTop: '20px', height: '60%', borderRadius:"12px" }}>
+                                    <Box sx={{ width: '100%', height: '640px', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden', margin: '0 auto' ,}}>
                                         <a href={reviewLinks[i]}>
-                                            <img src={image} alt={`Review Image ${i}`} style={{ maxWidth: '100%', maxHeight: '100%',borderRadius:10 }}/>
+                                            <img src={image} alt={`Review Image ${i}`} style={{ maxWidth: '100%', maxHeight:'600px' ,borderRadius:10 }}/>
                                         </a>
                                     </Box>
 
@@ -84,8 +85,7 @@ export default function rootpage(){
                             ))}
                         </Carousel>
                     </Box>
-                </div>      
-                </Paper>
+                {/* </Paper> */}
 
                 
             </div>
