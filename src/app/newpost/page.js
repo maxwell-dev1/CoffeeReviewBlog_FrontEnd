@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useJwtContext } from '../../../components/JwtContext';
 import { useUserContext } from '../../../components/UserContext';
+import { Height } from '@mui/icons-material';
 
 export default function newPostPage() {
     const [title, setTitle] = useState('');
@@ -90,26 +91,28 @@ export default function newPostPage() {
 
     return (
         <div>
-            <h2>Enter data below to create a new coffee review:</h2>
-            <div className='newPostForm'>
+            <h2 style={{color:"#967259"}}>Enter data below to create a new coffee review:</h2>
+            <div style={{backgroundColor:"rgba(99,72,50,.4)",height:'86vh',paddingTop:10,marginBottom:40,paddingLeft:16,borderRadius:10,backdropFilter:'blur(10px)',paddingBottom:14, boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1'}}>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="title"><strong>Post Title</strong></label>
+                    <div style={{display:"flex"}}> 
+                        <label htmlFor="title" style={{color:"#967259", marginLeft:40, marginTop:40}}><strong>Post Title:</strong></label>
+                        <br />
+                        <input className='newPostInput' type='text' required id='title' name='title' value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder='Review brewing methods, specific products, or both!'></input>
+                    </div>
                     <br />
-                    <input className='newPostInput' type='text' required id='title' name='title' value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder='Review brewing methods, specific products, or both!'></input>
-                    <br />
-                    <label htmlFor='rating'><strong>Rating</strong>: </label>
+                    <label htmlFor='rating' style={{color:"#967259"}}><strong>Rating</strong>: </label>
                     <br />
                     <input className='newPostInput' type='text' id='rating' name='rating' placeholder='Between 0 and 10' value={rating} onChange={(e) => { setRating(e.target.value) }}></input>
                     <br />
-                    <label htmlFor='body'><strong>Full review</strong>: </label>
+                    <label htmlFor='body' style={{color:"#967259"}}><strong>Full review</strong>: </label>
                     <br />
                     <textarea className='newPostInput bodyInput' type='text' id='body' name='body' value={body} onChange={(e) => { setBody(e.target.value) }}></textarea>
                     <br />
-                    <label htmlFor='brewMethod'><strong>Brewing Method</strong>:</label>
+                    <label htmlFor='brewMethod' style={{color:"#967259"}}><strong>Brewing Method</strong>:</label>
                     <br />
                     <input className='newPostInput' type='text' id='brewMethod' name='brewMethod' value={brewMethod} onChange={(e) => { setBrewMethod(e.target.value) }}></input>
                     <br />
-                    <label htmlFor='image'><strong>Upload an Image</strong>:</label>
+                    <label htmlFor='image' style={{color:"#967259"}}><strong>Upload an Image</strong>:</label>
                     {!imgURL && <input type='file' onChange={handleFile} id='image' className='imageInput'></input>}
                     <button type='submit' className='createPostButton'> Create post</button>
                 </form>
