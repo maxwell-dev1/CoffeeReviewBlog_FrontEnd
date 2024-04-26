@@ -21,6 +21,4 @@ export default function Learn() {
         </div>
     );
 }
-{/* <Typography sx={{ color: 'rgb(236,224,209)', fontSize: '1.5rem', textDecoration: 'underline',marginBottom:2 }}>
 
-<Typography sx={{ color: 'rgb(236,224,209)', fontSize: '.8rem',marginBottom:4,}}> */}
