@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useJwtContext } from '../../../components/JwtContext';
 import { useUserContext } from '../../../components/UserContext';
-import { Height } from '@mui/icons-material';
 
 export default function newPostPage() {
     const [title, setTitle] = useState('');

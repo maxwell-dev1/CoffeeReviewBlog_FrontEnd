@@ -76,7 +76,9 @@ const Details = () => {
             {loading ? (
                 <p>Loading....</p>
             ) :
-            (   <div className = 'singleReview'>
+            (   
+            <div >
+            <div className = 'singleReview'>
                 <div className= 'singleTitle'>
                 <h1>{title}</h1>
                 </div>
@@ -88,6 +90,8 @@ const Details = () => {
                 <p><strong>Brew Method </strong>: {brew}</p>
                 <p><strong>Author</strong>: {author}</p>
                 </div>
+                </div>
+                
                 </div>
             )}
         </div>

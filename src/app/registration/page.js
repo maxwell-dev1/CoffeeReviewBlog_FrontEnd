@@ -91,9 +91,9 @@ export default function register(){
     <div style={{justifyContent:"center", display:"flex"}}> 
 
         <Paper 
-        sx={{backgroundColor:"#967259",height:"600px",borderRadius:10, marginTop:6, width:"45%",
+        sx={{backgroundColor:"#967259",height:"640px",borderRadius:10, marginTop:"px", width:"45%",
          background:"linear-gradient(rgb(163, 138, 105,.85),rgba(56, 41, 29, 0.95))",boxShadow: '0px 0px 15px 5px #dbc1ac', border: '1px .55 #ece0d1',
-         textAlign:"center"}}>
+         textAlign:"center",marginBottom:'40px'}}>
 
             <Typography variant="h4" style={{ marginLeft:20, paddingTop:22,textAlign:"center", color:"#dbc1ac",textShadow: "0px 2px 4px rgba(0, 0, 0, .8)", }}>Welcome to registration page : </Typography>
             
@@ -104,7 +104,7 @@ export default function register(){
             {/* if the user hasnt clicked the register button yet display all the inputs so they can attempt to */}
             {!regClicked && 
             (<div>
-            <Typography sx={{color:"#dbc1ac", fontSize:18, marginBottom:1,textShadow: "0px 2px 4px rgba(0, 0, 0, .8)"}}>Email address</Typography>
+            <Typography sx={{color:"#dbc1ac", fontSize:18, marginBottom:1,textShadow: "0px 2px 4px rgba(0, 0, 0, .8)",marginTop:'50px'}}>Email address</Typography>
             <input className="loginIn" value={email} onChange={handleEmail} style={{boxShadow:"0px 5px 10px -5px #000000", fontFamily:"Lato"}}></input>
             <Typography sx={{color:"#dbc1ac",fontSize:18, marginBottom:1,textShadow: "0px 2px 4px rgba(0, 0, 0, .8)"}}>New username</Typography>
             <input className="loginIn" type="text" value={regUser} onChange={handleRegUser} style={{boxShadow:"0px 5px 10px -5px #000000"}}></input>
@@ -112,7 +112,7 @@ export default function register(){
             <input className="loginIn" type="password" value={regPass} onChange={handleRegPass} style={{boxShadow:"0px 5px 10px -5px #000000"}}></input>
 
             <br></br>
-            <Button onClick={handleRegistration}  sx={{color:"#dbc1ac", '&:hover': {backgroundColor: '#dbc1ac', color:"black"}, marginTop:3,boxShadow:"0px 5px 10px -5px #000000", width:"20%",borderRadius:2}}>
+            <Button onClick={handleRegistration}  sx={{color:"#dbc1ac", '&:hover': {backgroundColor: '#dbc1ac', color:"black"}, marginTop:"2px",boxShadow:"0px 5px 10px -5px #000000", width:"20%",borderRadius:2}}>
                 Register User</Button></div>)}
 
 

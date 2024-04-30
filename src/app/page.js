@@ -24,6 +24,7 @@ export default function rootpage(){
                 const images = data.data.map(review => `http://localhost:1337${review.attributes.ProductImage.data[0].attributes.formats.medium.url}`);
                 setReviewImages(images);  
                 const links = data.data.map(review => `http://localhost:3000/coffeereviews/${review.id}`)
+                links.slice(0,5)
                 setReviewLinks(links);
             }
         }, [loading, error, data]);
@@ -49,18 +50,18 @@ export default function rootpage(){
         <div>
             
             {/* Title texts */}
-            <div className='landingTitlesContainer'>
-            <Typography  sx={{letterSpacing:6, marginTop:2 , marginLeft:48, color:'#dbc1ac', fontSize:32}}>Featured Articles: </Typography> {/* replace with data for learn cofee articles instead of reviews */}
-            <Typography  sx={{letterSpacing:6, marginTop:2 , marginLeft:66, color:'#dbc1ac', fontSize:32}}>Recent Reviews: </Typography>
+            <div style={{display:'flex', marginLeft:"20%"}}>
+            <Typography  sx={{letterSpacing:6, marginTop:2 ,  color:'#dbc1ac', fontSize:32,}}>Featured Articles: </Typography> {/* replace with data for learn cofee articles instead of reviews */}
+            <Typography  sx={{letterSpacing:6, marginTop:2 , color:'#dbc1ac', fontSize:32,marginLeft:"30%"}}>Recent Reviews: </Typography>
             </div>
             
             {/* Div contains both recent posts carousel and featured articles  but not their text titles above them   */}
             <div className="homeCardCont">
-                <Paper className="homeTopCards"  sx={{backgroundColor:"rgba(0,0,0,0)", marginLeft:10, width:"45%",}} >
-                    {data.data.map(review => ( 
+                <Paper className="homeTopCards"  sx={{backgroundColor:"rgba(0,0,0,0)", marginLeft:10, width:"45%",marginTop:"28px"}} >
+                    {data.data.slice(0,5).map(review => ( 
                         <Card elevation={8} sx={{         backgroundColor: "rgba(219, 193, 172,.20)",
                         backgroundImage: "linear-gradient(to right, rgba(219, 193, 172, .15), rgba(0,0,0,.15))",marginBottom:6, height:"12%", backdropFilter: "blur(10px)"}}>
-                            <Typography variant='h4' sx={{marginLeft:6, marginTop:3,color:"#dbc1ac" }}>{review.attributes.Title}</Typography>
+                            <Typography variant='h4' sx={{marginLeft:6, marginTop:3,color:"#dbc1ac" }}>{review.attributes.Title.split(' ').slice(0, 5).join(' ')}</Typography> {/*split and slice makes the title display only the first 5 words */}
                         </Card>
                     ))} {/* replace with data for learn cofee articles instead of reviews */}
                 </Paper>

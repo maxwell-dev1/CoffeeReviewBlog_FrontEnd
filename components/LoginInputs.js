@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography,Button } from '@mui/material';
 import React from 'react';
 
 export default function LoginInputs({ activeUser, activePass, handleInputChange1, handleInputChange2, handleLogin }) {
@@ -12,7 +12,8 @@ export default function LoginInputs({ activeUser, activePass, handleInputChange1
         <Typography>Enter password:</Typography>
         <input type='password' value={activePass} onChange={handleInputChange2} className='loginIn' />
       </div>
-    <button onClick={handleLogin} className='loginButton'>Login</button>
+    <Button onClick={handleLogin} className='loginButton' variant="contained" color="primary" sx={{border: "1px solid rgba(219, 193, 172, 0.5)"
+, backgroundColor: '#5F3D2E',  color: '#FFFFFF', '&:hover': {backgroundColor: '#dbc1ac', color:"black"}}} >Login</Button>
   </div>
   
   );

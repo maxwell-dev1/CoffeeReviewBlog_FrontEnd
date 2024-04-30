@@ -19,11 +19,11 @@ const ScrollAwareFooter = () => {
 
   return (
     <footer className={`footer ${showFooter ? 'show' : 'hide'}`} style={{color:"#dbc1ac"}}>
-      <p className="footerItem">About</p>
-      <p className="footerItem">Contact</p>
-      <p className="footerItem">Copyright</p>
-      <p className="footerItem">Home</p>
-      <p className="footerItem">Reviews</p>
+      <a href="/about" style={{textDecoration:'none', color: 'rgb(216, 178, 178)'}}><p className="footerItem">About</p></a>
+      <a href="/contact" style={{textDecoration:'none', color: 'rgb(216, 178, 178)'}}><p className="footerItem">Contact</p></a>
+      <a href="/copyright" style={{textDecoration:'none', color: 'rgb(216, 178, 178)'}}><p className="footerItem">Copyright</p></a>
+      <a href="/" style={{textDecoration:'none', color: 'rgb(216, 178, 178)'}}><p className="footerItem">Home</p></a>
+      <a href="/coffeereviews" style={{textDecoration:'none', color: 'rgb(216, 178, 178)'}}><p className="footerItem">Reviews</p></a>
     </footer>
   );
 };

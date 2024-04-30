@@ -229,7 +229,7 @@ body{
 .post-button-container{
   overflow: hidden;
 }
-.newPostBtn, .loginButton, .createPostButton{
+.newPostBtn, .createPostButton{
   float: right;
   background-image: linear-gradient(-180deg, rgb(163, 138, 105) 0%, rgb(121, 31, 31) 100%);
   border-radius: .5rem;
@@ -247,10 +247,7 @@ body{
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-.loginButton:hover{
-    background-image: linear-gradient(-180deg, #dbc1ac 0%, #634832 100%);
-  
-}
+
 
 .createPostButton{
   float: right;
@@ -313,10 +310,10 @@ label{
   border-radius: 10px;
   font-size:20px;
   width:30%;
-  margin-top:50px;margin-bottom: 40px;
-  
-  
+  margin-top:25px;margin-bottom: 30px;
 }
+
+
 
 
 
@@ -346,10 +343,10 @@ label{
   background-color: black;
 }
 
-.landingTitlesContainer {
+/* .landingTitlesContainer {
   display: flex;
   justify-content: flex-start;
   margin-bottom: 12px;
-}
+} */
 
 /*-----------------------------Landing Page/ Home Page Styles ABOVE ---------------------------------------------------------------------*/

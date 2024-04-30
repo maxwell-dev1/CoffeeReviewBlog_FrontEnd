@@ -30,9 +30,7 @@ const Navbar = () => {
       <li>
         <a className="navLink" href="/">Home</a>
       </li>
-      {/* <li>
-        <a className="navLink" href="/testpage1">Test Page 1</a>
-      </li> */}
+      
       <li>
       <div className="navDropdown" onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown}>
             <a className="navLink" >User menu</a>
