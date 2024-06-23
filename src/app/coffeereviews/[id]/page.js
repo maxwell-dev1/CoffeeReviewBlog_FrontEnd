@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-
+import {Button} from '@mui/material'
 
 import axios from 'axios';
 
@@ -71,6 +71,9 @@ const Details = () => {
     return (
 
         <div >
+            <div style={{backgroundColor:"rgba(99,72,50,.4)",height:'150vh',paddingTop:10,marginBottom:40,paddingLeft:16,borderRadius:10,backdropFilter:'blur(10px)',paddingBottom:14, boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1'}}>
+
+
             {/* Notation explanation: is loading true? Then render everything in parenthesis of first arg between brackets, otherwise
              if loading is false we load the other argument  */}
             {loading ? (
@@ -80,20 +83,28 @@ const Details = () => {
             <div >
             <div className = 'singleReview'>
                 <div className= 'singleTitle'>
-                <h1>{title}</h1>
+                <h1 style={{color:'#dbc1ac'}}>{title}</h1>
                 </div>
-                <div className='singleImageCon'>
-                {imgURL ? (<img className='singleImage' src= {`http://localhost:1337${imgURL}`}/>) : (<p id='noImgText'>(no image)</p>)}
-                </div>
-                <div className='singleBody'>
-                <p><strong>Review</strong>: {body}</p>
-                <p><strong>Brew Method </strong>: {brew}</p>
-                <p><strong>Author</strong>: {author}</p>
-                </div>
-                </div>
+                {/* This next div is just the underline */}
+                <div style={{ backgroundColor: 'rgba(219,193,172,.4)', height: '2px', width: '95%', boxShadow: '0px 0px 10px rgba(0,0,0,.4)', borderRadius: '10px' }}></div>
                 
+                <div style={{ textAlign:'center',alignItems:'center'}}>
+                    {imgURL ? (<img className='singleImage' src= {`http://localhost:1337${imgURL}`}/>) : (<p id='noImgText'>(no image)</p>)}
+                </div> 
+
+                <div className='singleBody' style={{marginTop:'7%'}}>
+                    <p style={{color:'#dbc1ac'}}><strong>Review</strong>: {body}</p>
+                    <p style={{color:'#dbc1ac'}}><strong>Brew Method </strong>: {brew}</p>
+                    <p style={{color:'#dbc1ac'}}><strong>Author</strong>: {author}</p>
+                </div>
+
+            </div>
+                <div style={{display:'flex',justifyContent:'center',marginTop:'22px'}}>                
+                    <Button href='/coffeereviews' className='loginButton' variant="contained" color="primary" sx={{border: "1px solid rgba(219, 193, 172, 0.5)", backgroundColor: '#5F3D2E',  color: '#FFFFFF', '&:hover': {backgroundColor: '#dbc1ac', color:"black"}}}>See more reviews!</Button>
+                </div>
                 </div>
             )}
+            </div>
         </div>
 
     );
