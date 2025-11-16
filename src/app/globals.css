@@ -9,10 +9,11 @@
 
 .review-card{
   background:linear-gradient(rgb(163, 138, 105,.75),rgba(56, 41, 29, 0.928));
-  margin: 60px auto;
-  padding: 1px 20px 20px 90px;
+  margin: 35px auto;
+  /* padding: 1px 20px 20px 90px; */
   position: relative;
   border-radius:10px;
+  height: 20vh;
 }
 
 .navLinks{
@@ -105,13 +106,12 @@ body{
   border-radius: 10px;;
 }
 .detailsPreview{
-  /* margin-left:350px; */
   color:black;
   min-width: 50px;
-  max-width:700px;
-  width:700px;
-  margin-bottom:200px;
-  padding-left: 350px;
+  max-width:850px;
+  /* width:800px; */
+  /* margin-bottom:200px; */
+  padding-left: 375px;
   /* display:flex;
   justify-content: right; */
 }
