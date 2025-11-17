@@ -1,15 +1,13 @@
 'use client';
-import useStrapi from "../../../hooks/useStrapi"
 import React from 'react';
 //app router migration below we use /navigation instead of router
 import { useRouter } from 'next/navigation'
 import {useState} from 'react'
 import { Button, Paper, Typography } from "@mui/material";
-
+import {api} from '../../../utils/api';
 
 export default function register(){
 
-    const {fetchAPI} = useStrapi();
     const [regGood, setRegGood] = React.useState(true);
     //we make a router constant here for the useRouter to be simpler
     const router = useRouter();
@@ -26,25 +24,23 @@ export default function register(){
             "password": regPass
         }
         try{
-            //here we pass two arguemtns to fetchAPI in useStrapi.js . the first one becomes the path variable, the second argument becomes 
-            const res = await fetchAPI(`/api/auth/local/register`,{
+            const res = await fetch(api.users, {
                 method: 'POST',
-                data: userToRegister
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userToRegister)
             });
 
-            debugger;
-            if(res.status === 200 ){
-                setRegGood(true)
-            }
-            else if (res.status === 400){
-                setRegGood(false)
-                
-
+            if (res.ok) {
+                setRegGood(true);
+            } else {
+                setRegGood(false);
             }
         }
-
         catch(error){
-            console.log(error)
+            console.log(error);
+            setRegGood(false);
         }
         //I put the set clicked here because it makes it so it doesnt render the failed reg message between the click and the contents of the try processing , which
         //was making the message appear even for succesful attempts to register

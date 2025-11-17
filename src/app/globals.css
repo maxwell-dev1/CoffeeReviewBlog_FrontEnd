@@ -109,28 +109,15 @@ body{
   color:black;
   min-width: 50px;
   max-width:850px;
-  /* width:800px; */
-  /* margin-bottom:200px; */
   padding-left: 375px;
-  /* display:flex;
-  justify-content: right; */
 }
 
 .authorPrev{
-  /* padding-left:200px; */
-  /* padding-right:200px; */
   width:300px;
   margin-top: 10px;
   margin-left:-10px;
-  /* margin-bottom:50px; */
 }
 
-/* I use centering in the div container to center stuff within it */
-/* .singleImageCon{
-  display:flex; 
-  justify-content: center;
-} */
-/* I need to give border-radius to the image directly instaed of its container  */
 .singleImage{
   border-radius: 15px;
   margin-left:50px;

@@ -28,7 +28,7 @@ export default function ReviewPage() {
   return (
     <div>
       <div className="post-button-container">
-        {logGood && (
+        {jwt && jwt !== 'empty' && (
           <Link href="/newpost">
             <Button
               variant="contained"
