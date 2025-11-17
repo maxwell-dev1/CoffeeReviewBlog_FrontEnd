@@ -1,10 +1,10 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useJwtContext } from '../../../components/JwtContext';
 import { useUserContext } from '../../../components/UserContext';
 
-export default function newPostPage() {
+export default function NewPostPage() {
     const [title, setTitle] = useState('');
     const [rating, setRating] = useState();
     const [body, setBody] = useState('');
@@ -15,6 +15,24 @@ export default function newPostPage() {
     const { jwt } = useJwtContext();
     const { activeUser } = useUserContext();
 
+    // NEW: Protection — redirect if no valid JWT
+    useEffect(() => {
+        if (!jwt || jwt === 'empty' || jwt === '') {
+            router.push('/login');
+        }
+    }, [jwt, router]);
+
+    // Optional: show a quick message while redirecting
+    if (!jwt || jwt === 'empty' || jwt === '') {
+        return (
+            <div style={{ textAlign: 'center', marginTop: '100px', color: '#dbc1ac' }}>
+                <h2>Access Denied</h2>
+                <p>Redirecting to login...</p>
+            </div>
+        );
+    }
+
+    // Everything below this line only renders for logged-in users
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("submit title:" + title + '. Submitted rating: ' + rating + '. Submitted body: ' + body + " Brewing method: " + brewMethod);
@@ -70,7 +88,6 @@ export default function newPostPage() {
             router.push('/coffeereviews');
         } catch (error) {
             console.error('There was a problem:', error);
-            // Handle errors accordingly
         }
     };
 
