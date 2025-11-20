@@ -108,10 +108,10 @@ export default function NewPostPage() {
     return (
         <div>
             <h2 style={{color:"#967259"}}>Enter data below to create a new coffee review:</h2>
-            <div style={{backgroundColor:"rgba(99,72,50,.4)",height:'86vh',paddingTop:10,marginBottom:40,paddingLeft:16,borderRadius:10,backdropFilter:'blur(10px)',paddingBottom:14, boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1'}}>
-                <form onSubmit={handleSubmit}>
-                    <div style={{display:"flex"}}> 
-                        <label htmlFor="title" style={{color:"#967259", marginLeft:40, marginTop:40}}><strong>Post Title:</strong></label>
+            <div style={{backgroundColor:"rgba(99,72,50,.4)",height:'86vh',paddingTop:10,marginBottom:40, paddingLeft:16,borderRadius:10,backdropFilter:'blur(10px)',paddingBottom:14, boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1'}}>
+                <form onSubmit={handleSubmit} style={{marginLeft:'40px'}}>
+                    <div > 
+                        <label htmlFor="title" style={{color:"#967259", marginTop:40}}><strong>Post Title:</strong></label>
                         <br />
                         <input className='newPostInput' type='text' required id='title' name='title' value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder='Review brewing methods, specific products, or both!'></input>
                     </div>
@@ -130,10 +130,12 @@ export default function NewPostPage() {
                     <br />
                     <label htmlFor='image' style={{color:"#967259"}}><strong>Upload an Image</strong>:</label>
                     {!imgURL && <input type='file' onChange={handleFile} id='image' className='imageInput'></input>}
-                    <button type='submit' className='createPostButton'> Create post</button>
+                    <button type='submit'style={{float:'right',marginRight:'18px'}} > Create post</button>
+
+                    
+
                 </form>
-            </div>
-            {imgURL && <img className='newPostImgPrev' src={imgURL}></img>}
+            </div>{imgURL && <img className='newPostImgPrev' src={imgURL}></img>}
         </div>
     );
 }
