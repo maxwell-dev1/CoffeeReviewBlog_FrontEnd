@@ -86,7 +86,7 @@ export default function LoginPage() {
     return (
         <div style={{ display: "flex", justifyContent: "end", marginRight: "40px" }}>
             <img src='CoffeeSignIn.jpg' style={{ height: '88vh', width: "55%", marginRight: '164px', marginTop: "20px", borderRadius: "10px", boxShadow: '0px 0px 15px 5px #dbc1ac' }}></img>
-            <Paper sx={{ backgroundColor: "#967259", height: "600px", borderRadius: 10, marginTop: 6, width: "25%", background: "linear-gradient(rgb(163, 138, 105,.85),rgba(56, 41, 29, 0.95))", boxShadow: '0px 0px 15px 5px #dbc1ac', textAlign: "center" }}>
+            <Paper sx={{ backgroundColor: "#967259", height: "600px", borderRadius: 10, marginTop: 6, width: "30%", background: "linear-gradient(rgb(163, 138, 105,.85),rgba(56, 41, 29, 0.95))", boxShadow: '0px 0px 15px 5px #dbc1ac', textAlign: "center" }}>
                 <h2 style={{ marginTop: '54px' }}>Login</h2>
                 <p>Login Credentials are case sensitive!</p>
 

@@ -135,7 +135,8 @@ export default function NewPostPage() {
                     
 
                 </form>
-            </div>{imgURL && <img className='newPostImgPrev' src={imgURL}></img>}
+            </div>
+            {/* {imgURL && <img className='newPostImgPrev' src={imgURL}></img>} */}
         </div>
     );
 }
