@@ -90,9 +90,6 @@ export default function ReviewPage() {
                 <strong>Details</strong>: {review.body.substring(0, 60)}...
               </p>
 
-              
-               
-
                 {/* Read More - pushed to the right */}
                 <Link
                     href={`/coffeereviews/${review.id}`}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useJwtContext } from '../../../components/JwtContext';
 import { useUserContext } from '../../../components/UserContext';
+import { Typography, Button } from '@mui/material';
 
 export default function NewPostPage() {
     const [title, setTitle] = useState('');
@@ -108,17 +109,26 @@ export default function NewPostPage() {
     return (
         <div>
             <h2 style={{color:"#967259"}}>Enter data below to create a new coffee review:</h2>
-            <div style={{backgroundColor:"rgba(99,72,50,.4)",height:'86vh',paddingTop:10,marginBottom:40, paddingLeft:16,borderRadius:10,backdropFilter:'blur(10px)',paddingBottom:14, boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1'}}>
+            <div style={{backgroundColor:"rgba(99,72,50,.4)",height:'86vh',paddingTop:10,marginBottom:40, paddingLeft:16,borderRadius:10,
+                backdropFilter:'blur(10px)',paddingBottom:14, boxShadow: '0px 0px 10px #dbc1ac', border: '1px solid #ece0d1', overflow:'auto'}}>
                 <form onSubmit={handleSubmit} style={{marginLeft:'40px'}}>
-                    <div > 
+                    <div style={{display:'flex', flexDirection:'row',justifyContent:'space-between', maxHeight:'160px'}} > 
+                        <div style={{width:'50%'}}>
                         <label htmlFor="title" style={{color:"#967259", marginTop:40}}><strong>Post Title:</strong></label>
                         <br />
-                        <input className='newPostInput' type='text' required id='title' name='title' value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder='Review brewing methods, specific products, or both!'></input>
+                        <input className='newPostInput' style={{width:'50%'}} type='text' required id='title' name='title' value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder='Review brewing methods, specific products, or both!'></input>
+                        </div>
+                        <div style={{width:'45%', maxHeight:'200px',marginTop:'4%'}}>
+                        {imgURL && <img className='newPostImgPrev' style={{height:'auto',width:"45%",float:'right',marginRight:'15%',marginTop:'2%',borderRadius:'12px'}} src={imgURL}></img>}
+                        </div>          
                     </div>
                     <br />
                     <label htmlFor='rating' style={{color:"#967259"}}><strong>Rating</strong>: </label>
                     <br />
-                    <input className='newPostInput' type='text' id='rating' name='rating' placeholder='Between 0 and 10' value={rating} onChange={(e) => { setRating(e.target.value) }}></input>
+                    <input className='newPostInput' type='number' id='rating' step="0.1"
+                    max="10"    min="0" name='rating' placeholder='Between 0 and 10' value={rating} onChange={(e) => { setRating(e.target.value) }}
+                    
+                    ></input>
                     <br />
                     <label htmlFor='body' style={{color:"#967259"}}><strong>Full review</strong>: </label>
                     <br />
@@ -129,8 +139,18 @@ export default function NewPostPage() {
                     <input className='newPostInput' type='text' id='brewMethod' name='brewMethod' value={brewMethod} onChange={(e) => { setBrewMethod(e.target.value) }}></input>
                     <br />
                     <label htmlFor='image' style={{color:"#967259"}}><strong>Upload an Image</strong>:</label>
-                    {!imgURL && <input type='file' onChange={handleFile} id='image' className='imageInput'></input>}
-                    <button type='submit'style={{float:'right',marginRight:'18px'}} > Create post</button>
+                    <input type='file' onChange={handleFile} id='image' className='imageInput'></input>
+                    <Button type='submit' variant="contained"
+                        color="primary"
+                        sx={{
+                            float: 'right',
+                            border: '1px solid rgba(219, 193, 172, 0.5)',
+                            backgroundColor: '#5F3D2E',
+                            color: '#FFFFFF',
+                            '&:hover': { backgroundColor: '#dbc1ac', color: 'black' },
+                            marginRight:'5%',
+                            marginBottom:'10%'
+                        }} > Create post</Button>
 
                     
 
