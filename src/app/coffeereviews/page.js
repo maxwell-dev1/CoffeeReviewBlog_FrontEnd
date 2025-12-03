@@ -113,23 +113,24 @@ export default function ReviewPage() {
                 </p>
             </div>
             
-          {/* <div className="reviewPic">
+          <div className="reviewPic">
             {review.imageUrl ? (
               <img
                 src={`https://localhost:7029${review.imageUrl}`}
-                style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}
+                style={{width:'40px', height:'auto'}}
+                // style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}
                 className="reviewPageImg"
                 alt={`Image for Review ${review.id}`}
               />
             ) : (
-              <div className="noImagePlaceholder">No Image</div>
+              <div className="noImagePlaceholder"></div>
             )}
 
 
 
             
           </div>
- */}
+
 
 
           {/* Rating*/}
