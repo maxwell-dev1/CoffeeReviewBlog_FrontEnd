@@ -22,7 +22,7 @@ const Navbar = () => {
     setShowDropdown(!showDropdown);
   };
 
-  console.log('Navbar test for logGood=' + logGood);
+  // console.log('Navbar test for logGood=' + logGood);
   return (
     
     <div className='navLinks'>

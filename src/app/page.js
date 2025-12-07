@@ -1,19 +1,19 @@
 'use client';
-import { useState } from 'react';
-import { useLogGood } from '/components/LogGoodContext';
-import { useUserContext } from '/components/UserContext';
-import { useJwtContext } from '/components/JwtContext';
+// import { useState } from 'react';
+// import { useLogGood } from '/components/LogGoodContext';
+// import { useUserContext } from '/components/UserContext';
+// import { useJwtContext } from '/components/JwtContext';
 import { Typography, Paper, Box } from '@mui/material';
 import Carousel from 'react-material-ui-carousel';
 
 export default function RootPage() {
-  const [reviewImages] = useState([]);
-  const [reviewLinks] = useState([]);
-  const { logGood } = useLogGood();
-  const { activeUser } = useUserContext();
-  const { jwt } = useJwtContext();
+  // const [reviewImages] = useState([]);
+  // const [reviewLinks] = useState([]);
+  // const { logGood } = useLogGood();
+  // const { activeUser } = useUserContext();
+  // const { jwt } = useJwtContext();
 
-  console.log('logGood = ' + logGood + '. active user is: ' + activeUser);
+  // console.log('logGood = ' + logGood + '. active user is: ' + activeUser);
   const images = ['/1.jpg', '/2.jpg', '/3.jpg'];
 
   

@@ -10,10 +10,14 @@
 .review-card{
   background:linear-gradient(rgb(163, 138, 105,.75),rgba(56, 41, 29, 0.928));
   margin: 35px auto;
-  /* padding: 1px 20px 20px 90px; */
   position: relative;
   border-radius:10px;
   height: 20vh;
+  transition: transform 0.5s ease;
+}
+
+.review-card:hover{
+  scale:1.02;
 }
 
 .navLinks{

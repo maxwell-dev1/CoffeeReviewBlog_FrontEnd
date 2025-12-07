@@ -7,15 +7,18 @@ export function useLogGood() {
   }
   
   export function LogGoodProvider({ children }) {
-    const [logGood, setLogGood] = useState(() => {
-        // Get the value from local storage during initialization
-        return JSON.parse(localStorage.getItem('logGood')) || false;
-      });
+    const [logGood, setLogGood] = useState(false);
+    
+    useEffect(()=>{
+      const loginStored  = localStorage.getItem('logGood')
+      if(loginStored !== null)
+        setLogGood(JSON.parse(loginStored))
+    },[])
       
-      useEffect(() => {
-        // Store the updated value in local storage whenever logGood changes
-        localStorage.setItem('logGood', JSON.stringify(logGood));
-      }, [logGood]);
+    useEffect(() => {
+      // Store the updated value in local storage whenever logGood changes
+      localStorage.setItem('logGood', JSON.stringify(logGood));
+    }, [logGood]);
 
 
   

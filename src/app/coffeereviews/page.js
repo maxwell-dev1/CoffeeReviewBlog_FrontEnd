@@ -3,26 +3,23 @@ import useFetch from '../../../hooks/useFetch';
 import { api } from '../../../utils/api';
 import React from 'react';
 import Link from 'next/link';
-import { useLogGood } from '../../../components/LogGoodContext';
-import { useUserContext } from '../../../components/UserContext';
 import { useJwtContext } from '../../../components/JwtContext';
 import { Typography, Button } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 export default function ReviewPage() {
   const { loading, error, data } = useFetch(api.reviews);
-  const { logGood } = useLogGood();
-  const { activeUser } = useUserContext();
+  const router = useRouter(); // remember to use curly braces for things like load,error, jwt for the other const- which absorbs properties from an object. Without curly braces, we are using the ojbect itself "router"
   const { jwt } = useJwtContext();
 
-  console.log('logGood = ' + logGood + '. active user is: ' + activeUser);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   console.log(data);
-  console.log(jwt);
+  console.log("jwt: " + jwt); // DO NOT ALLOW THIS INTO PRODUCTION --- DEV PURPOSES ONLY
 
-  // newest first
+  // reversing the JSON array will allow us to display newest first ---------------------------- NOTE: TEST...
   const reviews = [...data.data].reverse();
 
   return (
@@ -65,12 +62,15 @@ export default function ReviewPage() {
 
       {reviews.map((review) => (
         <div
+          onClick={() => router.push(`/coffeereviews/${review.id}`)}
           key={review.id}
           className="review-card"
           style={{
             boxShadow: '0px 0px 10px #dbc1ac',
             border: '1px solid #ece0d1',
             borderRadius: '10px',
+            cursor:'pointer',
+            width:'96%'
           }}
         >
           <Typography variant="h5" sx={{ color: '#dbc1ac', ml:14, mt:2}}>
@@ -91,7 +91,7 @@ export default function ReviewPage() {
               </p>
 
                 {/* Read More - pushed to the right */}
-                <Link
+                {/* <Link
                     href={`/coffeereviews/${review.id}`}
                     style={{ textDecoration: 'none' }}
                 >
@@ -105,15 +105,30 @@ export default function ReviewPage() {
                     >
                     Read More
                     </Typography>
-                </Link>
+                </Link> */}
+                <div className="reviewPic">
+                  {review.imageUrl ? (
+                    <img
+                      src={`https://localhost:7029${review.imageUrl}`}
+                      style={{width:'40px', height:'auto'}}
+                      // style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}
+                      className="reviewPageImg"
+                      alt={`Image for Review ${review.id}`}
+                    />
+                  ) : (
+                    <div className="noImagePlaceholder">  </div>
+                  )}
+            
                 </div>
+
+              </div>
 
               <p style={{ margin: 0 }}>
                     <strong>Author</strong>: {review.username}
                 </p>
             </div>
             
-          <div className="reviewPic">
+          {/* <div className="reviewPic">
             {review.imageUrl ? (
               <img
                 src={`https://localhost:7029${review.imageUrl}`}
@@ -123,13 +138,13 @@ export default function ReviewPage() {
                 alt={`Image for Review ${review.id}`}
               />
             ) : (
-              <div className="noImagePlaceholder"></div>
+              <div className="noImagePlaceholder">  </div>
             )}
 
 
 
             
-          </div>
+          </div> */}
 
 
 

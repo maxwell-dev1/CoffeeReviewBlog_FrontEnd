@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
-//app router migration below we use /navigation instead of router
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'//we use /navigation instead of router
 import {useState} from 'react'
 import { Button, Paper, Typography } from "@mui/material";
 import {api} from '../../../utils/api';

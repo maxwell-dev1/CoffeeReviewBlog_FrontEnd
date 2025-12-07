@@ -8,8 +8,7 @@ import { UserContextProvider } from '../../components/UserContext';
 import { JwtContextProvider } from '../../components/JwtContext';
 
 
-//In next Js, the layout.js file takes the place that the app file took in 
-//normal React. So components imported here will appear on every page. 
+//In next Js, the layout.js  components imported here will appear on every page. 
 
 
 const inter = Inter({ subsets: ['latin'] })
