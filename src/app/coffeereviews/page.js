@@ -19,8 +19,7 @@ export default function ReviewPage() {
   console.log(data);
   console.log("jwt: " + jwt); // DO NOT ALLOW THIS INTO PRODUCTION --- DEV PURPOSES ONLY
 
-  // reversing the JSON array will allow us to display newest first ---------------------------- NOTE: TEST...
-  const reviews = [...data.data].reverse();
+  const reviews = [...data.data]//conveniently named var to display data in html  
 
   return (
     <div>
@@ -61,6 +60,7 @@ export default function ReviewPage() {
       </Typography>
 
       {reviews.map((review) => (
+        // <div className="review-card-wrapper">
         <div
           onClick={() => router.push(`/coffeereviews/${review.id}`)}
           key={review.id}
@@ -70,7 +70,8 @@ export default function ReviewPage() {
             border: '1px solid #ece0d1',
             borderRadius: '10px',
             cursor:'pointer',
-            width:'96%'
+            width:'96%',
+            
           }}
         >
           <Typography variant="h5" sx={{ color: '#dbc1ac', ml:14, mt:2}}>
@@ -83,35 +84,18 @@ export default function ReviewPage() {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginTop: '8px',
+                    marginTop: '4px',
                 }}
                 >
-              <p>
+              <p style={{width:'60%'}}>
                 <strong>Details</strong>: {review.body.substring(0, 60)}...
               </p>
 
-                {/* Read More - pushed to the right */}
-                {/* <Link
-                    href={`/coffeereviews/${review.id}`}
-                    style={{ textDecoration: 'none' }}
-                >
-                    <Typography
-                    sx={{
-                        color: '#38220f',
-                        fontWeight: 500,
-                        '&:hover': { textDecoration: 'underline' },
-                    }}
-                    variant="h6"
-                    >
-                    Read More
-                    </Typography>
-                </Link> */}
                 <div className="reviewPic">
                   {review.imageUrl ? (
                     <img
                       src={`https://localhost:7029${review.imageUrl}`}
-                      style={{width:'40px', height:'auto'}}
-                      // style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}
+                      style={{width:'80px', height:'auto'}}
                       className="reviewPageImg"
                       alt={`Image for Review ${review.id}`}
                     />
@@ -123,30 +107,11 @@ export default function ReviewPage() {
 
               </div>
 
-              <p style={{ margin: 0 }}>
+              <p style={{ margin:0 }}>
                     <strong>Author</strong>: {review.username}
                 </p>
             </div>
             
-          {/* <div className="reviewPic">
-            {review.imageUrl ? (
-              <img
-                src={`https://localhost:7029${review.imageUrl}`}
-                style={{width:'40px', height:'auto'}}
-                // style={{ boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}
-                className="reviewPageImg"
-                alt={`Image for Review ${review.id}`}
-              />
-            ) : (
-              <div className="noImagePlaceholder">  </div>
-            )}
-
-
-
-            
-          </div> */}
-
-
 
           {/* Rating*/}
           <div
@@ -165,6 +130,7 @@ export default function ReviewPage() {
           </div>
           
         </div>
+        // </div>
       ))}
     </div>
   );

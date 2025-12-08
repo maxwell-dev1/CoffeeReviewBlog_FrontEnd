@@ -12,12 +12,15 @@ export default function NewPostPage() {
   const [body, setBody] = useState('');
   const [brewMethod, setBrewMethod] = useState('');
   const [file, setFile] = useState(null);
-  const [imgPreview, setImgPreview] = useState(null); // renamed from imgURL for clarity
+  const [imgPreview, setImgPreview] = useState(null); 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState("")
+
 
   const router = useRouter();
   const { jwt } = useJwtContext();
 
-  // Protect route
+  // Protect route : if a valid jwt is NOT detected, the user is presented an error rerouted to login page
   useEffect(() => {
     if (!jwt || jwt === 'empty' || jwt === '') {
       router.push('/login');
@@ -33,7 +36,7 @@ export default function NewPostPage() {
     );
   }
 
-  // Image preview handler (kept exactly as you had it — works perfectly)
+  // IMAGE PREVIEW handler - enables us to display a preview of the image the user uploads via the file input 
   const handleFile = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -49,23 +52,45 @@ export default function NewPostPage() {
     }
   };
 
-  // PLACEHOLDER SUBMIT — ready to be replaced with .NET call
+
+  //FORM SUBMISSION FOR POSTING NEW COFFEEREVIEW ENTRY ---------------------------------
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log('Form submitted:', {
-      title,
-      rating,
-      body,
-      brewMethod,
-      file: file?.name || 'no file',
-    });
+    setIsSubmitting(true);
+    setSubmitError('');
 
-    // This is where we'll put the single FormData POST to your .NET endpoint
-    // Coming in the next message when you say "go"!
+    try {
+        // 1. Build FormData according to .NET route param expectations (see DTO class - .net automatically formats incoming form data to DTO)
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('rating', rating);
+        formData.append('body', body);
+        if (brewMethod) formData.append('brewingMethod', brewMethod);
+        if (file) formData.append('file', file);// optional image file attachment
 
-    // Temporary success redirect
-    // router.push('/coffeereviews');
+        // 2. Send the single request to your .NET API
+        const response = await fetch('https://localhost:7029/api/coffeereviews', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${jwt}`, //jwt attachment
+            },
+                body: formData, //attach form input data payload
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Server error ${response.status}: ${errorText || 'Failed to create review'}`);
+        }
+        router.push('/coffeereviews'); //redirect on successful POST
+    } 
+    catch (err) {
+        console.error('Submission failed:', err);
+        setSubmitError(err.message || 'Something went wrong. Please try again.');
+    } 
+    finally {
+        setIsSubmitting(false);
+    }
   };
 
   return (
@@ -187,6 +212,7 @@ export default function NewPostPage() {
           <Button
             type='submit'
             variant="contained"
+            disabled={isSubmitting}
             sx={{
               float: 'right',
               border: '1px solid rgba(219, 193, 172, 0.5)',
@@ -198,7 +224,7 @@ export default function NewPostPage() {
               mt: 3
             }}
           >
-            Create Post
+            {isSubmitting ? 'Posting..' : 'Create Post'}
           </Button>
         </form>
       </div>
