@@ -44,7 +44,7 @@ const Navbar = () => {
           </div>      
       </li>
       <li>
-        <a href='/'><img src='/logo1.png' height={100} width={100} style={{borderRadius:50,marginLeft:24}}></img></a>
+        <a href='/'><img id='navLogo' src='/logo1.png' height={100} width={100} style={{borderRadius:50,marginLeft:24}}></img></a>
       </li>
       <li>
         <a className="navLink" href = "/coffeereviews">Coffee Reviews</a>

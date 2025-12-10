@@ -12,9 +12,9 @@
   margin: 35px auto;
   position: relative;
   border-radius:10px;
-  height: 20vh;
+  height: 22vh;
   transition: transform 0.5s ease;
-
+  
 }
 
 .review-card:hover{
@@ -45,7 +45,6 @@
   padding: 0; /* Remove any default padding or margins */
   margin: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adding drop shadow */
-  border-radius: 10px; /* Adding rounded corners */
 }
 
 
@@ -53,6 +52,31 @@
   color: rgb(216, 178, 178);
   text-decoration:none;
   font-size:24px;
+}
+
+@media (max-width: 950px){
+  .navLinks a{
+    font-size:18px;
+  }
+}
+@media (max-width: 545px){
+  .navLinks a{
+    font-size:12px;
+  }
+}
+
+@media (max-width: 545px){
+  #navLogo{
+    margin-left: 2px;
+    height:50px;
+    width:50px;
+  }
+}
+
+@media (max-width: 545px){
+  #reviewTitle{
+    font-size: 14px;
+  }
 }
 
 ul li a{
@@ -112,22 +136,26 @@ body{
   margin-right:40px
 }
 
-.reviewPageImg{
-  border-radius: 10px;;
-}
+
 .detailsPreview{
   color:black;
   min-width: 50px;
-  max-width:850px;
-  padding-left: 375px;
+  max-width:920px;
+  margin-left:20%;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1000px) {
   .detailsPreview {
-    /*display: none !important;  !important overrides any inline styles if needed */
     width:50%;
     overflow-x:auto;
     max-height: 12vh;
+    margin-left: 30%;
+  }
+}
+@media (max-height: 680px) {
+  .detailsPreview {
+    max-height: 10vh;
+    overflow-x:auto;
   }
 }
 

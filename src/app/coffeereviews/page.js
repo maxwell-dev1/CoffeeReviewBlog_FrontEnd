@@ -71,10 +71,10 @@ export default function ReviewPage() {
             borderRadius: '10px',
             cursor:'pointer',
             width:'96%',
-            
+
           }}
         >
-          <Typography variant="h5" sx={{ color: '#dbc1ac', ml:14, mt:2}}>
+          <Typography variant="h5" sx={{ color: '#dbc1ac', ml:14, mt:2}} id="reviewTitle">
             {review.title}
           </Typography>
             <div className="detailsPreview">
@@ -91,12 +91,12 @@ export default function ReviewPage() {
                 <strong>Details</strong>: {review.body.substring(0, 60)}...
               </p>
 
-                <div className="reviewPic">
+                <div>
                   {review.imageUrl ? (
                     <img
                       src={`https://localhost:7029${review.imageUrl}`}
-                      style={{width:'80px', height:'auto'}}
-                      className="reviewPageImg"
+                      style={{width:'120px', height:'auto',borderRadius:'10px'}}
+                      id="reviewPageImg"
                       alt={`Image for Review ${review.id}`}
                     />
                   ) : (
